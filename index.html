@@ -9,10 +9,10 @@
         .container { max-width: 500px; margin: auto; padding: 20px; background: #222; border-radius: 10px; }
         .indicator { display: flex; justify-content: space-between; margin: 10px 0; }
         .timeframe { margin-top: 15px; }
-        button { padding: 14px; margin-top: 20px; font-size: 22px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; }
+        button { padding: 12px; margin-top: 20px; font-size: 20px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; }
         button:hover { background: #ff6347; }
         .result { font-size: 28px; margin-top: 20px; font-weight: bold; }
-        .timeframe select { padding: 10px; font-size: 18px; border-radius: 5px; background: #333; color: white; }
+        .timeframe select { padding: 8px; font-size: 16px; border-radius: 5px; background: #333; color: white; }
     </style>
 </head>
 <body>
@@ -22,28 +22,28 @@
         <p>Select indicators and choose timeframe:</p>
 
         <div id="indicators">
-            <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" value="4.5"></div>
-            <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
-            <div class="indicator"><span>Dual Cloud</span><input type="checkbox" value="4.5"></div>
-            <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
-            <div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="4"></div>
-            <div class="indicator"><span>JS Squeeze Pro 2</span><input type="checkbox" value="4.5"></div>
-            <div class="indicator"><span>AlgoAlpha SuperTrend (Entry/Exit)</span><input type="checkbox" value="4.5"></div>
-            <div class="indicator"><span>VWAP</span><input type="checkbox" value="3.5"></div>
-            <div class="indicator"><span>Relative Volume (RVOL)</span><input type="checkbox" value="3.5"></div>
-            <div class="indicator"><span>EMA/SMA Resistance</span><input type="checkbox" value="3.5"></div>
-            <div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" value="3.5"></div>
-            <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" value="3.5"></div>
-            <div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="3.5"></div>
-            <div class="indicator"><span>ATR-Based Volatility</span><input type="checkbox" value="3"></div>
+            <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" value="3.5"></div>
+            <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="3.5"></div>
+            <div class="indicator"><span>Dual Cloud</span><input type="checkbox" value="3.5"></div>
+            <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="3.5"></div>
+            <div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="3"></div>
+            <div class="indicator"><span>JS Squeeze Pro 2</span><input type="checkbox" value="3.5"></div>
+            <div class="indicator"><span>AlgoAlpha SuperTrend (Entry/Exit)</span><input type="checkbox" value="3.5"></div>
+            <div class="indicator"><span>VWAP</span><input type="checkbox" value="2.5"></div>
+            <div class="indicator"><span>Relative Volume (RVOL)</span><input type="checkbox" value="2.5"></div>
+            <div class="indicator"><span>EMA/SMA Resistance</span><input type="checkbox" value="2.5"></div>
+            <div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" value="2.5"></div>
+            <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" value="2.5"></div>
+            <div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="2.5"></div>
+            <div class="indicator"><span>ATR-Based Volatility</span><input type="checkbox" value="2"></div>
         </div>
 
         <div class="timeframe">
             <label for="timeframe">Select Timeframe:</label>
             <select id="timeframe">
-                <option value="1.3">1M-5M</option>
-                <option value="1.5">15M</option>
-                <option value="1.8">30M</option>
+                <option value="0.9">1M-5M</option>
+                <option value="1.1">15M</option>
+                <option value="1.3">30M</option>
             </select>
         </div>
 
@@ -63,7 +63,21 @@
             let finalScore = baseScore * timeframeMultiplier;
 
             finalScore = Math.min(finalScore, 100); // Ensures max is 100
-            document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
+
+            let convictionLevel = "";
+            if (finalScore < 25) {
+                convictionLevel = "🚫 Low Conviction";
+            } else if (finalScore < 50) {
+                convictionLevel = "⚠️ Moderate Conviction";
+            } else if (finalScore < 75) {
+                convictionLevel = "✅ Strong Conviction";
+            } else if (finalScore < 90) {
+                convictionLevel = "🚀 High Conviction";
+            } else {
+                convictionLevel = "🔥 Ultra Conviction";
+            }
+
+            document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)} - ${convictionLevel}`;
         }
     </script>
 
