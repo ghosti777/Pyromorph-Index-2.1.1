@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Pyromorph Index 3.4.2 🔥</title>
+    <title>🔥 Pyromorph Index 3.4 🔥</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
         .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; }
-        .indicator { display: flex; justify-content: space-between; margin: 5px 0; font-size: 18px; }
-        .sub-options { padding-left: 20px; font-size: 16px; color: #bbb; }
+        .indicator { display: flex; justify-content: space-between; margin: 5px 0; }
         .timeframe, .conditions { margin-top: 10px; }
         button { padding: 12px; margin-top: 15px; font-size: 20px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; width: 100%; }
         button:hover { background: #ff6347; }
@@ -18,20 +17,26 @@
         .analysis { background: #222; border-radius: 8px; }
         .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; }
     </style>
+    <script src="quotes.js"></script> <!-- 🔥 This loads the external quotes file -->
 </head>
 <body>
 
     <div class="container">
-        <h2>🔥 Pyromorph Index 3.4.2 🔥</h2>
+        <h2>🔥 Pyromorph Index 3.4 🔥</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
         <div id="indicators">
             <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
-            <div class="sub-options">
-                <div class="indicator"><span>↳ Impulse Move 🔥</span><input type="checkbox" id="liqImpulse" value="1.3"></div>
-                <div class="indicator"><span>↳ Cluster Signal 🌀</span><input type="checkbox" id="liqCluster" value="1.2"></div>
-                <div class="indicator"><span>↳ Choppy Grab ❌</span><input type="checkbox" id="liqChoppy" value="-0.8"></div>
-                <div class="indicator"><span>↳ Volume Confirmation 📊</span><input type="checkbox" id="liqVolume" value="1.1"></div>
+
+            <div id="liqGrabOptions" style="display: none;">
+                <label for="liqGrabType">Liquidity Grab Type:</label>
+                <select id="liqGrabType">
+                    <option value="1.0">Standard</option>
+                    <option value="1.3">Impulse Move 🔥</option>
+                    <option value="1.2">Cluster Signal 🌀</option>
+                    <option value="0.8">Choppy Grab ❌</option>
+                </select>
+                <div class="indicator"><span>Volume Confirmation</span><input type="checkbox" id="liqVolumeBoost" value="1.1"></div>
             </div>
 
             <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
@@ -80,38 +85,55 @@
         <div class="quote" id="quote"></div>
     </div>
 
-<script>
-    function calculateScore() {
-        let baseScore = 0;
-        document.querySelectorAll('#indicators input:checked').forEach(el => {
-            baseScore += parseFloat(el.value);
+    <script>
+        document.getElementById("liqGrab").addEventListener("change", function () {
+            document.getElementById("liqGrabOptions").style.display = this.checked ? "block" : "none";
         });
 
-        // Apply Liquidity Grab Adjustments Only if Liquidity Grabs is Checked
-        if (document.getElementById('liqGrab').checked) {
-            if (document.getElementById('liqImpulse').checked) baseScore += parseFloat(document.getElementById('liqImpulse').value);
-            if (document.getElementById('liqCluster').checked) baseScore += parseFloat(document.getElementById('liqCluster').value);
-            if (document.getElementById('liqChoppy').checked) baseScore += parseFloat(document.getElementById('liqChoppy').value);
-            if (document.getElementById('liqVolume').checked) baseScore += parseFloat(document.getElementById('liqVolume').value);
+        function calculateScore() {
+            let baseScore = 0;
+            document.querySelectorAll('#indicators input:checked').forEach(el => {
+                baseScore += parseFloat(el.value);
+            });
+
+            if (document.getElementById("liqGrab").checked) {
+                baseScore *= parseFloat(document.getElementById("liqGrabType").value);
+                if (document.getElementById("liqVolumeBoost").checked) {
+                    baseScore *= 1.1; // Volume Confirmation Boost
+                }
+            }
+
+            let timeframeMultiplier = parseFloat(document.getElementById("timeframe").value);
+            let dualCloudMultiplier = parseFloat(document.getElementById("dualCloud").value);
+            let atrMultiplier = parseFloat(document.getElementById("atr").value);
+
+            let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
+            finalScore = Math.min(finalScore, 100); // Ensures max is 100
+
+            let analysisText = "";
+            if (finalScore >= 90) {
+                analysisText = "🔥 Ultra High Conviction Trade 🔥";
+            } else if (finalScore >= 75) {
+                analysisText = "✅ Strong Conviction Trade";
+            } else if (finalScore >= 50) {
+                analysisText = "⚠️ Moderate Conviction Trade";
+            } else if (finalScore >= 30) {
+                analysisText = "❓ Low Conviction Trade";
+            } else {
+                analysisText = "🚫 No Conviction / Avoid Trade";
+            }
+
+            fetch("quotes.js") 
+                .then(response => response.json())
+                .then(data => {
+                    let randomQuote = data[Math.floor(Math.random() * data.length)];
+                    document.getElementById("quote").innerText = `🐺 ${randomQuote}`;
+                });
+
+            document.getElementById("result").innerText = `Score: ${finalScore.toFixed(1)}`;
+            document.getElementById("analysis").innerText = analysisText;
         }
-
-        let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
-        let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
-        let atrMultiplier = parseFloat(document.getElementById('atr').value);
-
-        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
-        finalScore = Math.min(finalScore, 100); // Ensures max is 100
-
-        let analysisText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" :
-                           finalScore >= 75 ? "✅ Strong Conviction Trade" :
-                           finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
-                           finalScore >= 30 ? "❓ Low Conviction Trade" :
-                                              "🚫 No Conviction / Avoid Trade";
-
-        document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
-        document.getElementById('analysis').innerText = analysisText;
-    }
-</script>
+    </script>
 
 </body>
 </html>
