@@ -105,7 +105,20 @@
 
         // Load a random quote from the external quotes.js file
         let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+let analysisText = "";
+if (finalScore >= 90) {
+    analysisText = "🔥 Ultra High Conviction Trade 🔥";
+} else if (finalScore >= 75) {
+    analysisText = "✅ Strong Conviction Trade";
+} else if (finalScore >= 50) {
+    analysisText = "⚠️ Moderate Conviction Trade";
+} else if (finalScore >= 30) {
+    analysisText = "❓ Low Conviction Trade";
+} else {
+    analysisText = "🚫 No Conviction / Avoid Trade";
+}
 
+document.getElementById('analysis').innerText = analysisText;
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
         document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
     }
