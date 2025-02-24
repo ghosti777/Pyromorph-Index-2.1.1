@@ -3,24 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Pyromorph Index 3.1 🔥</title>
+    <title>🔥 Pyromorph Index 3.2 🔥</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
-        .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: #111; 
+            color: #fff; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        }
+        .container { 
+            max-width: 500px; 
+            padding: 15px; 
+            background: #222; 
+            border-radius: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: 95vh; 
+        }
         .indicator { display: flex; justify-content: space-between; margin: 5px 0; }
         .timeframe, .conditions { margin-top: 10px; }
-        button { padding: 12px; margin-top: 15px; font-size: 20px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; width: 100%; }
+        button { 
+            padding: 12px; 
+            margin-top: 15px; 
+            font-size: 20px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            background: #ff4500; 
+            color: #fff; 
+            border: none; 
+            width: 100%; 
+        }
         button:hover { background: #ff6347; }
-        .result, .analysis { font-size: 24px; font-weight: bold; margin-top: 10px; padding: 10px; }
-        select { padding: 8px; font-size: 16px; border-radius: 5px; background: #333; color: white; width: 100%; }
-        .result { background: #333; border-radius: 8px; }
-        .analysis { background: #222; border-radius: 8px; }
+        .result, .analysis { 
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-top: 10px; 
+            padding: 10px; 
+            background: #333; 
+            border-radius: 8px; 
+        }
+        select { 
+            padding: 8px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            background: #333; 
+            color: white; 
+            width: 100%; 
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>🔥 Pyromorph Index 3.1 🔥</h2>
+        <h2>🔥 Pyromorph Index 3.2 🔥</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
         <div id="indicators">
