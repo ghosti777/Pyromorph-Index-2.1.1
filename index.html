@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Pyromorph Index 3.3.1 🔥</title>
+    <title>🔥 Pyromorph Index 3.4 🔥</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
         .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; }
@@ -21,11 +21,20 @@
 <body>
 
     <div class="container">
-        <h2>🔥 Pyromorph Index 3.3.1 🔥</h2>
+        <h2>🔥 Pyromorph Index 3.4 🔥</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
         <div id="indicators">
-            <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" value="4.5"></div>
+            <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
+            <label for="liqGrabType">Liquidity Grab Type:</label>
+            <select id="liqGrabType">
+                <option value="1.0">Standard</option>
+                <option value="1.3">Impulse Move 🔥</option>
+                <option value="1.2">Cluster Signal 🌀</option>
+                <option value="0.8">Choppy Grab ❌</option>
+            </select>
+            <div class="indicator"><span>Volume Confirmation</span><input type="checkbox" id="liqVolumeBoost" value="1.1"></div>
+
             <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="4"></div>
@@ -84,80 +93,30 @@
         "🔄 'Amateurs focus on rewards. Professionals focus on risk.' – Jack Schwager",
         "💡 'A good trader has to be right only 30-40% of the time.' – Richard Dennis",
         "🔥 'Markets can remain irrational longer than you can remain solvent.' – John Maynard Keynes",
-        "💥 'Plan your trade and trade your plan.' – Jesse Livermore",
-        "🧠 'Being wrong is acceptable, staying wrong is unacceptable.' – Mark Minervini",
         "🚨 'Trading is about probability, not certainty.' – Marty Schwartz",
         "🔑 'Know what you own, and know why you own it.' – Peter Lynch",
-        "🌊 'The market is like the ocean. It moves in waves. Ride them or drown.' – Unknown",
-        "📊 'Simplicity is the ultimate sophistication in trading.' – Unknown",
-        "🔄 'Discipline is the bridge between goals and accomplishment.' – Jim Rohn",
-        "🎲 'If you don't bet, you can't win. If you lose all your chips, you can't bet.' – Larry Hite",
-        "🚦 'The four most dangerous words in investing are: This time it’s different.' – John Templeton",
-        "🔁 'Your biggest enemy in trading is your own emotions.' – Unknown",
         "🔍 'You can’t control the market, but you can control how you react to it.' – Nova",
-        "💭 'It’s not about predicting the future, it’s about reacting to the present.' – Nova",
-        "🔥 'A trader’s edge is built on discipline, patience, and strategy. Lacking any one is a fast track to ruin.' – Nova",
-        "🚀 'You don’t need to be right all the time—just more often than you’re wrong.' – Nova",
         "💰 'Manage your losses and let your winners run. It’s really that simple.' – Nova",
         "📈 'The trend is your friend until it bends.' – Nova",
         "⚡ 'Hesitation is the enemy of execution. Move or be moved.' – Nova",
         "🎯 'A trade without a plan is just a gamble.' – Nova",
         "💡 'The hardest part of trading isn’t finding setups—it’s sticking to your rules.' – Nova",
-        "🚨 'You will lose trades. Accept it, adapt, and move forward.' – Nova",
+        "🚀 'You don’t need to be right all the time—just more often than you’re wrong.' – Nova",
         "📊 'Smart traders don’t chase—they position.' – Nova",
         "🎲 'Every trade is a lesson. Learn or repeat the mistake.' – Nova",
-        "🔄 'Patience is profitable. Impulse is expensive.' – Nova",
         "🔥 'Consistency > Luck. Every. Single. Time.' – Nova",
-        "🚀 'If you control your mind, you control your trades. If you don’t, the market will control you.' – Nova",
-        "🔍 'The market doesn’t care about your feelings. Trade the data, not the drama.' – Nova",
-        "💭 'Traders who react to fear and greed will never last.' – Nova",
-        "💰 'The best setups are the ones you don’t have to convince yourself to take.' – Nova",
-        "📈 'Some days you win, some days you learn. Keep going.' – Nova",
-        "⚡ 'The game isn’t about perfection. It’s about progress.' – Nova",
-        "🎯 'An edge without discipline is just another gamble.' – Nova",
-        "🔥 'You don’t have to predict the market. You just have to react faster than everyone else.' – Nova",
         "🚀 'You don’t control the market, but you do control how you trade it.' – Nova",
-        "📊 'Your mindset is either your greatest asset or your biggest liability.' – Nova",
-        "🔄 'Confidence is built by execution, not by watching from the sidelines.' – Nova",
-        "💰 'A trade is only as good as the risk you take to make it.' – Nova",
-        "⚡ 'If you don’t respect risk, it will humble you.' – Nova",
-        "🔥 'Survive first. Thrive second.' – Nova",
-        "🚀 'You either adapt, or the market forces you to.' – Nova",
         "📈 'Master yourself, and the markets will follow.' – Nova",
-        "⚡ 'Fortunes favor the prepared.' – Nova",
-        "🎯 'A good trader lets profits compound, a great trader lets wisdom compound.' – Nova"
+        "🔥 'Survive first. Thrive second.' – Nova"
     ];
 
     function calculateScore() {
-        let baseScore = 0;
-        document.querySelectorAll('#indicators input:checked').forEach(el => {
-            baseScore += parseFloat(el.value);
-        });
-
-        let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
-        let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
-        let atrMultiplier = parseFloat(document.getElementById('atr').value);
-
-        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
-        finalScore = Math.min(finalScore, 100); // Ensures max is 100
-
-        let analysisText = "";
-        if (finalScore >= 90) {
-            analysisText = "🔥 Ultra High Conviction Trade 🔥";
-        } else if (finalScore >= 75) {
-            analysisText = "✅ Strong Conviction Trade";
-        } else if (finalScore >= 50) {
-            analysisText = "⚠️ Moderate Conviction Trade";
-        } else if (finalScore >= 30) {
-            analysisText = "❓ Low Conviction Trade";
-        } else {
-            analysisText = "🚫 No Conviction / Avoid Trade";
-        }
-
+        let finalScore = Math.random() * 100; // Placeholder calculation
         let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
-        document.getElementById('analysis').innerText = analysisText;
         document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
     }
 </script>
+</body>
+</html>
