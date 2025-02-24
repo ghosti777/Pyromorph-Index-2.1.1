@@ -26,15 +26,11 @@
 
         <div id="indicators">
             <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
-            
-            <label for="liqGrabType">Liquidity Grab Type:</label>
-            <select id="liqGrabType">
-                <option value="1.0">Standard</option>
-                <option value="1.3">Impulse Move 🔥</option>
-                <option value="1.2">Cluster Signal 🌀</option>
-                <option value="0.8">Choppy Grab ❌</option>
-            </select>
-            <div class="indicator"><span>Volume Confirmation (RVOL)</span><input type="checkbox" id="liqVolumeBoost" value="1.2"></div>
+
+            <div class="indicator"><span>Liquidity Grab - Impulse Move 🔥</span><input type="checkbox" id="liqImpulse" value="1.3"></div>
+            <div class="indicator"><span>Liquidity Grab - Cluster Signal 🌀</span><input type="checkbox" id="liqCluster" value="1.2"></div>
+            <div class="indicator"><span>Liquidity Grab - Choppy Grab ❌</span><input type="checkbox" id="liqChoppy" value="0.8"></div>
+            <div class="indicator"><span>Volume Confirmation</span><input type="checkbox" id="liqVolumeBoost" value="1.1"></div>
 
             <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
@@ -83,19 +79,6 @@
     </div>
 
 <script>
-    const quotes = [
-        "💭 'The market is a device for transferring money from the impatient to the patient.' – Warren Buffett",
-        "🔥 'Risk comes from not knowing what you’re doing.' – Warren Buffett",
-        "🚀 'Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble.' – Warren Buffett",
-        "💰 'Successful trading is about managing risk, not avoiding it.' – Ed Seykota",
-        "⚡ 'Losers average losers.' – Paul Tudor Jones",
-        "📈 'The trend is your friend until it bends.' – Nova",
-        "🔥 'Consistency > Luck. Every. Single. Time.' – Nova",
-        "🚀 'You don’t control the market, but you do control how you trade it.' – Nova",
-        "📈 'Master yourself, and the markets will follow.' – Nova",
-        "🔥 'Survive first. Thrive second.' – Nova"
-    ];
-
     function calculateScore() {
         let baseScore = 0;
         document.querySelectorAll('#indicators input:checked').forEach(el => {
@@ -105,11 +88,14 @@
         let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
         let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
         let atrMultiplier = parseFloat(document.getElementById('atr').value);
-        let liqGrabMultiplier = document.getElementById('liqGrab').checked ? parseFloat(document.getElementById('liqGrabType').value) : 1.0;
-        let liqVolumeMultiplier = document.getElementById('liqVolumeBoost').checked ? 1.2 : 1.0;
 
-        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier * liqGrabMultiplier * liqVolumeMultiplier;
-        finalScore = Math.min(finalScore, 100); // Cap at 100
+        let liqGrabTypeMultiplier = 1.0; // Default multiplier
+        if (document.getElementById('liqImpulse').checked) liqGrabTypeMultiplier *= 1.3;
+        if (document.getElementById('liqCluster').checked) liqGrabTypeMultiplier *= 1.2;
+        if (document.getElementById('liqChoppy').checked) liqGrabTypeMultiplier *= 0.8;
+
+        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier * liqGrabTypeMultiplier;
+        finalScore = Math.min(finalScore, 100); // Ensures max is 100
 
         let analysisText = "";
         if (finalScore >= 90) {
@@ -124,11 +110,11 @@
             analysisText = "🚫 No Conviction / Avoid Trade";
         }
 
-        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        let randomQuote = "🐺 'Trade the process, not the outcome.' – Nova"; // Placeholder quote
 
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
         document.getElementById('analysis').innerText = analysisText;
-        document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
+        document.getElementById('quote').innerText = randomQuote;
     }
 </script>
 </body>
