@@ -3,66 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Pyromorph Index 3.2.1 🔥</title>
+    <title>🔥 Pyromorph Index 3.3 🔥</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            background-color: #111; 
-            color: #fff; 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-        }
-        .container { 
-            max-width: 500px; 
-            padding: 15px; 
-            background: #222; 
-            border-radius: 10px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            min-height: 98vh; 
-        }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
+        .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; }
         .indicator { display: flex; justify-content: space-between; margin: 5px 0; }
         .timeframe, .conditions { margin-top: 10px; }
-        button { 
-            padding: 12px; 
-            margin-top: 15px; 
-            font-size: 20px; 
-            cursor: pointer; 
-            border-radius: 8px; 
-            background: #ff4500; 
-            color: #fff; 
-            border: none; 
-            width: 100%; 
-        }
+        button { padding: 12px; margin-top: 15px; font-size: 20px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; width: 100%; }
         button:hover { background: #ff6347; }
-        .result, .analysis { 
-            font-size: 24px; 
-            font-weight: bold; 
-            margin-top: 10px; 
-            padding: 10px; 
-            background: #333; 
-            border-radius: 8px; 
-        }
-        select { 
-            padding: 8px; 
-            font-size: 16px; 
-            border-radius: 5px; 
-            background: #333; 
-            color: white; 
-            width: 100%; 
-        }
+        .result, .analysis, .quote { font-size: 24px; font-weight: bold; margin-top: 10px; padding: 10px; }
+        select { padding: 8px; font-size: 16px; border-radius: 5px; background: #333; color: white; width: 100%; }
+        .result { background: #333; border-radius: 8px; }
+        .analysis { background: #222; border-radius: 8px; }
+        .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 20px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>🔥 Pyromorph Index 3.2.1 🔥</h2>
+        <h2>🔥 Pyromorph Index 3.3 🔥</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
         <div id="indicators">
@@ -108,6 +67,7 @@
 
         <button onclick="calculateScore()">🚀 Calculate 🚀</button>
 
+        <div class="quote" id="quote">💬 "Great trades are built on great discipline." - Nova</div>
         <div class="result" id="result">Score: --</div>
         <div class="analysis" id="analysis"></div>
     </div>
@@ -139,6 +99,27 @@
                 analysisText = "🚫 No Conviction / Avoid Trade";
             }
 
+            let quotes = [
+                "💬 \"Great trades are built on great discipline.\" - Nova",
+                "💬 \"Patience is the master key to profit.\" - Nova",
+                "💬 \"If you hesitate, you've already lost.\" - Nova",
+                "💬 \"The market doesn’t care about your feelings—trade accordingly.\" - Nova",
+                "💬 \"Risk management is the bridge between survival and success.\" - Nova",
+                "💬 \"A losing trade doesn’t define you, but how you handle it does.\" - Nova",
+                "💬 \"Master your emotions or the market will master you.\" - Nova",
+                "💬 \"Cut losses fast, let winners run.\" - Nova",
+                "💬 \"The best traders execute without hesitation.\" - Nova",
+                "💬 \"Fear and greed move the market. Control them, and you control your trades.\" - Nova",
+                "💬 \"Your strategy is only as good as your discipline.\" - Nova",
+                "💬 \"Adapt or get left behind.\" - Nova",
+                "💬 \"A strong trade is a prepared trade.\" - Nova",
+                "💬 \"If you don’t know why you entered, you won’t know when to exit.\" - Nova",
+                "💬 \"The market is a battlefield. Be a warrior, not a gambler.\" - Nova"
+            ];
+
+            let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+            document.getElementById('quote').innerText = randomQuote;
             document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
             document.getElementById('analysis').innerText = analysisText;
         }
