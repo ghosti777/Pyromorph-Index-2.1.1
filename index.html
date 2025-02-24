@@ -26,6 +26,7 @@
 
         <div id="indicators">
             <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
+            
             <label for="liqGrabType">Liquidity Grab Type:</label>
             <select id="liqGrabType">
                 <option value="1.0">Standard</option>
@@ -33,7 +34,7 @@
                 <option value="1.2">Cluster Signal 🌀</option>
                 <option value="0.8">Choppy Grab ❌</option>
             </select>
-            <div class="indicator"><span>Volume Confirmation</span><input type="checkbox" id="liqVolumeBoost" value="1.1"></div>
+            <div class="indicator"><span>Volume Confirmation (RVOL)</span><input type="checkbox" id="liqVolumeBoost" value="1.2"></div>
 
             <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
@@ -88,22 +89,7 @@
         "🚀 'Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble.' – Warren Buffett",
         "💰 'Successful trading is about managing risk, not avoiding it.' – Ed Seykota",
         "⚡ 'Losers average losers.' – Paul Tudor Jones",
-        "🎯 'The goal of a successful trader is to make the best trades. Money is secondary.' – Alexander Elder",
-        "📈 'Trend following is an exercise in observing and responding to the ever-present moment of now.' – Ed Seykota",
-        "🔄 'Amateurs focus on rewards. Professionals focus on risk.' – Jack Schwager",
-        "💡 'A good trader has to be right only 30-40% of the time.' – Richard Dennis",
-        "🔥 'Markets can remain irrational longer than you can remain solvent.' – John Maynard Keynes",
-        "🚨 'Trading is about probability, not certainty.' – Marty Schwartz",
-        "🔑 'Know what you own, and know why you own it.' – Peter Lynch",
-        "🔍 'You can’t control the market, but you can control how you react to it.' – Nova",
-        "💰 'Manage your losses and let your winners run. It’s really that simple.' – Nova",
         "📈 'The trend is your friend until it bends.' – Nova",
-        "⚡ 'Hesitation is the enemy of execution. Move or be moved.' – Nova",
-        "🎯 'A trade without a plan is just a gamble.' – Nova",
-        "💡 'The hardest part of trading isn’t finding setups—it’s sticking to your rules.' – Nova",
-        "🚀 'You don’t need to be right all the time—just more often than you’re wrong.' – Nova",
-        "📊 'Smart traders don’t chase—they position.' – Nova",
-        "🎲 'Every trade is a lesson. Learn or repeat the mistake.' – Nova",
         "🔥 'Consistency > Luck. Every. Single. Time.' – Nova",
         "🚀 'You don’t control the market, but you do control how you trade it.' – Nova",
         "📈 'Master yourself, and the markets will follow.' – Nova",
@@ -111,10 +97,37 @@
     ];
 
     function calculateScore() {
-        let finalScore = Math.random() * 100; // Placeholder calculation
+        let baseScore = 0;
+        document.querySelectorAll('#indicators input:checked').forEach(el => {
+            baseScore += parseFloat(el.value);
+        });
+
+        let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
+        let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
+        let atrMultiplier = parseFloat(document.getElementById('atr').value);
+        let liqGrabMultiplier = document.getElementById('liqGrab').checked ? parseFloat(document.getElementById('liqGrabType').value) : 1.0;
+        let liqVolumeMultiplier = document.getElementById('liqVolumeBoost').checked ? 1.2 : 1.0;
+
+        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier * liqGrabMultiplier * liqVolumeMultiplier;
+        finalScore = Math.min(finalScore, 100); // Cap at 100
+
+        let analysisText = "";
+        if (finalScore >= 90) {
+            analysisText = "🔥 Ultra High Conviction Trade 🔥";
+        } else if (finalScore >= 75) {
+            analysisText = "✅ Strong Conviction Trade";
+        } else if (finalScore >= 50) {
+            analysisText = "⚠️ Moderate Conviction Trade";
+        } else if (finalScore >= 30) {
+            analysisText = "❓ Low Conviction Trade";
+        } else {
+            analysisText = "🚫 No Conviction / Avoid Trade";
+        }
+
         let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
+        document.getElementById('analysis').innerText = analysisText;
         document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
     }
 </script>
