@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Pyromorph Index 3.4 🔥</title>
+    <title>🔥 Pyromorph Index 3.4.1 🔥</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
         .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; }
@@ -21,16 +21,17 @@
 <body>
 
     <div class="container">
-        <h2>🔥 Pyromorph Index 3.4 🔥</h2>
+        <h2>🔥 Pyromorph Index 3.4.1 🔥</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
         <div id="indicators">
             <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
-
-            <div class="indicator"><span>Liquidity Grab - Impulse Move 🔥</span><input type="checkbox" id="liqImpulse" value="1.3"></div>
-            <div class="indicator"><span>Liquidity Grab - Cluster Signal 🌀</span><input type="checkbox" id="liqCluster" value="1.2"></div>
-            <div class="indicator"><span>Liquidity Grab - Choppy Grab ❌</span><input type="checkbox" id="liqChoppy" value="0.8"></div>
-            <div class="indicator"><span>Volume Confirmation</span><input type="checkbox" id="liqVolumeBoost" value="1.1"></div>
+            <div class="sub-options">
+                <div class="indicator"><span>Impulse Move 🔥</span><input type="checkbox" id="liqImpulse" value="1.3"></div>
+                <div class="indicator"><span>Cluster Signal 🌀</span><input type="checkbox" id="liqCluster" value="1.2"></div>
+                <div class="indicator"><span>Choppy Grab ❌</span><input type="checkbox" id="liqChoppy" value="-0.8"></div>
+                <div class="indicator"><span>Volume Confirmation 📊</span><input type="checkbox" id="liqVolume" value="1.1"></div>
+            </div>
 
             <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
@@ -85,37 +86,31 @@
             baseScore += parseFloat(el.value);
         });
 
+        // Check if Liquidity Grab is selected
+        if (document.getElementById('liqGrab').checked) {
+            if (document.getElementById('liqImpulse').checked) baseScore += parseFloat(document.getElementById('liqImpulse').value);
+            if (document.getElementById('liqCluster').checked) baseScore += parseFloat(document.getElementById('liqCluster').value);
+            if (document.getElementById('liqChoppy').checked) baseScore += parseFloat(document.getElementById('liqChoppy').value);
+            if (document.getElementById('liqVolume').checked) baseScore += parseFloat(document.getElementById('liqVolume').value);
+        }
+
         let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
         let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
         let atrMultiplier = parseFloat(document.getElementById('atr').value);
 
-        let liqGrabTypeMultiplier = 1.0; // Default multiplier
-        if (document.getElementById('liqImpulse').checked) liqGrabTypeMultiplier *= 1.3;
-        if (document.getElementById('liqCluster').checked) liqGrabTypeMultiplier *= 1.2;
-        if (document.getElementById('liqChoppy').checked) liqGrabTypeMultiplier *= 0.8;
-
-        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier * liqGrabTypeMultiplier;
+        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
         finalScore = Math.min(finalScore, 100); // Ensures max is 100
 
-        let analysisText = "";
-        if (finalScore >= 90) {
-            analysisText = "🔥 Ultra High Conviction Trade 🔥";
-        } else if (finalScore >= 75) {
-            analysisText = "✅ Strong Conviction Trade";
-        } else if (finalScore >= 50) {
-            analysisText = "⚠️ Moderate Conviction Trade";
-        } else if (finalScore >= 30) {
-            analysisText = "❓ Low Conviction Trade";
-        } else {
-            analysisText = "🚫 No Conviction / Avoid Trade";
-        }
-
-        let randomQuote = "🐺 'Trade the process, not the outcome.' – Nova"; // Placeholder quote
+        let analysisText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" :
+                           finalScore >= 75 ? "✅ Strong Conviction Trade" :
+                           finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
+                           finalScore >= 30 ? "❓ Low Conviction Trade" :
+                                              "🚫 No Conviction / Avoid Trade";
 
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
         document.getElementById('analysis').innerText = analysisText;
-        document.getElementById('quote').innerText = randomQuote;
     }
 </script>
+
 </body>
 </html>
