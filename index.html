@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Pyromorph Index 3.3 🔥</title>
+    <title>🔥 Pyromorph Index 3.3.1 🔥</title>
     <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
         .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; }
@@ -15,13 +15,13 @@
         select { padding: 8px; font-size: 16px; border-radius: 5px; background: #333; color: white; width: 100%; }
         .result { background: #333; border-radius: 8px; }
         .analysis { background: #222; border-radius: 8px; }
-        .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 20px; }
+        .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>🔥 Pyromorph Index 3.3 🔥</h2>
+        <h2>🔥 Pyromorph Index 3.3.1 🔥</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
         <div id="indicators">
@@ -67,12 +67,111 @@
 
         <button onclick="calculateScore()">🚀 Calculate 🚀</button>
 
-        <div class="quote" id="quote">💬 "Great trades are built on great discipline." - Nova</div>
         <div class="result" id="result">Score: --</div>
         <div class="analysis" id="analysis"></div>
+        <div class="quote" id="quote"></div>
     </div>
 
     <script>
+        const quotes = [
+            "The market is a device for transferring money from the impatient to the patient. — Warren Buffett",
+            "Cut your losses short. Let your winners run. — Jesse Livermore",
+            "Amateurs think about how much they can make. Professionals think about how much they can lose. — Jack Schwager",
+            "Discipline is remembering what you want. — David Campbell",
+            "The biggest risk is not taking any risk. — Mark Zuckerberg",
+            "A lion doesn’t lose sleep over the opinion of sheep. — Nova",
+            "Trade what you see, not what you think. — Unknown",
+            "Consistency is the name of the game. — Unknown",
+            "Adapt or die. — Paul Tudor Jones",
+            "Your success is my success. — Nova",
+            "Confidence comes from preparation. — Unknown",
+            "Move with purpose or don’t move at all. — Nova",
+            "Execution > Excuses. — Nova",
+            "Patience + Process = Profits. — Unknown",
+            "Trade like a sniper. Live like a king. — Nova",
+            "Every tick is a test. Pass it. — Nova",
+            "Excuses make zero dollars. — Nova",
+            "Dreams don’t work unless you do. — John C. Maxwell",
+            "Charts tell stories. Learn the language. — Unknown",
+            "Stay disciplined, stay dangerous. — Nova",
+            "Most people fail because they trade for money. Trade for mastery. — Nova",
+            "Think slow, trade fast. — Nova",
+            const quotes = [
+    "💭 'The market is a device for transferring money from the impatient to the patient.' – Warren Buffett",
+    "🔥 'Risk comes from not knowing what you’re doing.' – Warren Buffett",
+    "🚀 'Opportunities come infrequently. When it rains gold, put out the bucket, not the thimble.' – Warren Buffett",
+    "💰 'Successful trading is about managing risk, not avoiding it.' – Ed Seykota",
+    "⚡ 'Losers average losers.' – Paul Tudor Jones",
+    "🎯 'The goal of a successful trader is to make the best trades. Money is secondary.' – Alexander Elder",
+    "📈 'Trend following is an exercise in observing and responding to the ever-present moment of now.' – Ed Seykota",
+    "🔄 'Amateurs focus on rewards. Professionals focus on risk.' – Jack Schwager",
+    "💡 'A good trader has to be right only 30-40% of the time.' – Richard Dennis",
+    "🔥 'Markets can remain irrational longer than you can remain solvent.' – John Maynard Keynes",
+    "💥 'Plan your trade and trade your plan.' – Jesse Livermore",
+    "🧠 'Being wrong is acceptable, staying wrong is unacceptable.' – Mark Minervini",
+    "🚨 'Trading is about probability, not certainty.' – Marty Schwartz",
+    "🔑 'Know what you own, and know why you own it.' – Peter Lynch",
+    "🌊 'The market is like the ocean. It moves in waves. Ride them or drown.' – Unknown",
+    "📊 'Simplicity is the ultimate sophistication in trading.' – Unknown",
+    "🔄 'Discipline is the bridge between goals and accomplishment.' – Jim Rohn",
+    "🎲 'If you don't bet, you can't win. If you lose all your chips, you can't bet.' – Larry Hite",
+    "🚦 'The four most dangerous words in investing are: This time it’s different.' – John Templeton",
+    "🔁 'Your biggest enemy in trading is your own emotions.' – Unknown",
+    "🔍 'You can’t control the market, but you can control how you react to it.' – Nova",
+    "💭 'It’s not about predicting the future, it’s about reacting to the present.' – Nova",
+    "🔥 'A trader’s edge is built on discipline, patience, and strategy. Lacking any one is a fast track to ruin.' – Nova",
+    "🚀 'You don’t need to be right all the time—just more often than you’re wrong.' – Nova",
+    "💰 'Manage your losses and let your winners run. It’s really that simple.' – Nova",
+    "📈 'The trend is your friend until it bends.' – Nova",
+    "⚡ 'Hesitation is the enemy of execution. Move or be moved.' – Nova",
+    "🎯 'A trade without a plan is just a gamble.' – Nova",
+    "💡 'The hardest part of trading isn’t finding setups—it’s sticking to your rules.' – Nova",
+    "🚨 'You will lose trades. Accept it, adapt, and move forward.' – Nova",
+    "📊 'Smart traders don’t chase—they position.' – Nova",
+    "🎲 'Every trade is a lesson. Learn or repeat the mistake.' – Nova",
+    "🔄 'Patience is profitable. Impulse is expensive.' – Nova",
+    "🔥 'Consistency > Luck. Every. Single. Time.' – Nova",
+    "🚀 'If you control your mind, you control your trades. If you don’t, the market will control you.' – Nova",
+    "🔍 'The market doesn’t care about your feelings. Trade the data, not the drama.' – Nova",
+    "💭 'Traders who react to fear and greed will never last.' – Nova",
+    "💰 'The best setups are the ones you don’t have to convince yourself to take.' – Nova",
+    "📈 'Some days you win, some days you learn. Keep going.' – Nova",
+    "⚡ 'The game isn’t about perfection. It’s about progress.' – Nova",
+    "🎯 'An edge without discipline is just another gamble.' – Nova",
+    "🔥 'You don’t have to predict the market. You just have to react faster than everyone else.' – Nova",
+    "🚀 'You don’t control the market, but you do control how you trade it.' – Nova",
+    "📊 'Your mindset is either your greatest asset or your biggest liability.' – Nova",
+    "🔄 'Confidence is built by execution, not by watching from the sidelines.' – Nova",
+    "💰 'A trade is only as good as the risk you take to make it.' – Nova",
+    "⚡ 'If you don’t respect risk, it will humble you.' – Nova",
+    "🔥 'Survive first. Thrive second.' – Nova",
+    "🚀 'You either adapt, or the market forces you to.' – Nova",
+    "📈 'Master yourself, and the markets will follow.' – Nova",
+    "⚡ 'Fortunes favor the prepared.' – Nova",
+    "🎯 'A good trader lets profits compound, a great trader lets wisdom compound.' – Nova",
+    "🔥 'You don’t trade the markets, you trade your beliefs about the markets.' – Mark Douglas",
+    "🚀 'Successful traders do not let emotions impact their strategy.' – Unknown",
+    "💰 'A disciplined trader is a profitable trader.' – Unknown",
+    "⚡ 'Winning is a process, not a single trade.' – Unknown",
+    "📈 'Risk small, win big. That’s the game.' – Unknown",
+    "🔄 'Good trades don’t always make money, bad trades don’t always lose money. Focus on process.' – Unknown",
+    "💭 'You will never beat the market, but you can beat your own bad habits.' – Unknown",
+    "🔥 'The best traders are masters of waiting.' – Unknown",
+    "🚀 'The market rewards patience, punishes desperation.' – Unknown",
+    "📊 'Traders who adapt, survive. Traders who don’t, disappear.' – Unknown",
+    "🎯 'No single trade should make or break you. Manage risk first.' – Unknown",
+    "💰 'Trade setups don’t matter if you can’t execute properly.' – Unknown",
+    "⚡ 'Know when to hold, know when to fold.' – Unknown",
+    "📈 'Markets aren’t rational. Don’t expect them to be.' – Unknown",
+    "🔄 'Being wrong is acceptable. Staying wrong is lethal.' – Unknown",
+    "💭 'Fear makes traders blind. Discipline gives them vision.' – Unknown",
+    "🔥 'If you don’t learn from your mistakes, your money will teach you the hard way.' – Unknown"
+];
+            "No one is coming to save you. Get up. — Nova",
+            "The market is always right. Your ego isn’t. — Unknown",
+            "It’s not about being right. It’s about making money. — Unknown"
+        ];
+
         function calculateScore() {
             let baseScore = 0;
             document.querySelectorAll('#indicators input:checked').forEach(el => {
@@ -99,29 +198,11 @@
                 analysisText = "🚫 No Conviction / Avoid Trade";
             }
 
-            let quotes = [
-                "💬 \"Great trades are built on great discipline.\" - Nova",
-                "💬 \"Patience is the master key to profit.\" - Nova",
-                "💬 \"If you hesitate, you've already lost.\" - Nova",
-                "💬 \"The market doesn’t care about your feelings—trade accordingly.\" - Nova",
-                "💬 \"Risk management is the bridge between survival and success.\" - Nova",
-                "💬 \"A losing trade doesn’t define you, but how you handle it does.\" - Nova",
-                "💬 \"Master your emotions or the market will master you.\" - Nova",
-                "💬 \"Cut losses fast, let winners run.\" - Nova",
-                "💬 \"The best traders execute without hesitation.\" - Nova",
-                "💬 \"Fear and greed move the market. Control them, and you control your trades.\" - Nova",
-                "💬 \"Your strategy is only as good as your discipline.\" - Nova",
-                "💬 \"Adapt or get left behind.\" - Nova",
-                "💬 \"A strong trade is a prepared trade.\" - Nova",
-                "💬 \"If you don’t know why you entered, you won’t know when to exit.\" - Nova",
-                "💬 \"The market is a battlefield. Be a warrior, not a gambler.\" - Nova"
-            ];
-
             let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
-            document.getElementById('quote').innerText = randomQuote;
             document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
             document.getElementById('analysis').innerText = analysisText;
+            document.getElementById('quote').innerText = `💭 ${randomQuote}`;
         }
     </script>
 
