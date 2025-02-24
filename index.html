@@ -5,62 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🔥 Pyromorph Index 2.1 🔥</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; }
-        .container { max-width: 500px; margin: 50px auto; padding: 20px; background: #222; border-radius: 10px; }
-        .indicator { display: flex; justify-content: space-between; padding: 10px; }
-        .timeframe { margin-top: 15px; font-size: 18px; }
-        button { padding: 15px; margin-top: 20px; font-size: 20px; background: #ff4500; color: white; border: none; cursor: pointer; border-radius: 5px; }
-        button:hover { background: #ff5722; }
-        .result { font-size: 24px; margin-top: 20px; font-weight: bold; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .indicator, .timeframe {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        button {
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 18px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>🔥 Pyromorph Index 2.1 🔥</h2>
         <p>Select indicators and choose timeframe:</p>
+        
         <div id="indicators">
-            <div class="indicator"><span>Liquidity Grabs</span> <input type="checkbox" id="liq"></div>
-            <div class="indicator"><span>Lux Algo SuperTrend AI</span> <input type="checkbox" id="lux"></div>
-            <div class="indicator"><span>Dual Cloud</span> <input type="checkbox" id="cloud"></div>
-            <div class="indicator"><span>UT Bot Alerts</span> <input type="checkbox" id="ut"></div>
-            <div class="indicator"><span>Schaff Trend Cycle (STC)</span> <input type="checkbox" id="stc"></div>
-            <div class="indicator"><span>JS Squeeze Pro 2</span> <input type="checkbox" id="js"></div>
-            <div class="indicator"><span>AlgoAlpha SuperTrend (Entry/Exit)</span> <input type="checkbox" id="algo"></div>
-            <div class="indicator"><span>VWAP</span> <input type="checkbox" id="vwap"></div>
-            <div class="indicator"><span>Relative Volume (RVOL)</span> <input type="checkbox" id="rvol"></div>
-            <div class="indicator"><span>EMA/SMA Resistance</span> <input type="checkbox" id="ema"></div>
-            <div class="indicator"><span>Support & Demand Zones</span> <input type="checkbox" id="sd"></div>
-            <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span> <input type="checkbox" id="trend"></div>
-            <div class="indicator"><span>RedK EVEREX</span> <input type="checkbox" id="redk"></div>
-            <div class="indicator"><span>ATR-Based Volatility</span> <input type="checkbox" id="atr"></div>
+            <div class="indicator"><span>Liquidity Grabs</span> <input type="checkbox" value="8"></div>
+            <div class="indicator"><span>Lux Algo SuperTrend AI</span> <input type="checkbox" value="7"></div>
+            <div class="indicator"><span>Dual Cloud</span> <input type="checkbox" value="7"></div>
+            <div class="indicator"><span>UT Bot Alerts</span> <input type="checkbox" value="6"></div>
+            <div class="indicator"><span>Schaff Trend Cycle (STC)</span> <input type="checkbox" value="6"></div>
+            <div class="indicator"><span>JS Squeeze Pro 2</span> <input type="checkbox" value="6"></div>
+            <div class="indicator"><span>AlgoAlpha SuperTrend</span> <input type="checkbox" value="6"></div>
+            <div class="indicator"><span>VWAP</span> <input type="checkbox" value="5"></div>
+            <div class="indicator"><span>Relative Volume (RVOL)</span> <input type="checkbox" value="5"></div>
+            <div class="indicator"><span>EMA/SMA Resistance</span> <input type="checkbox" value="5"></div>
+            <div class="indicator"><span>Support & Demand Zones</span> <input type="checkbox" value="5"></div>
+            <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span> <input type="checkbox" value="4"></div>
+            <div class="indicator"><span>RedK EVEREX</span> <input type="checkbox" value="4"></div>
+            <div class="indicator"><span>ATR-Based Volatility</span> <input type="checkbox" value="3"></div>
         </div>
+        
         <div class="timeframe">
-            Timeframe: <select id="timeframe">
-                <option value="1.0">1M-5M</option>
+            <label for="timeframe">Timeframe:</label>
+            <select id="timeframe">
+                <option value="1">1M - 5M</option>
                 <option value="1.3">15M</option>
-                <option value="1.8">30M</option>
+                <option value="1.5">30M</option>
             </select>
         </div>
-        <button onclick="calculate()">🚀 Calculate 🚀</button>
+        
+        <button onclick="calculateScore()">🚀 Calculate 🚀</button>
         <div class="result" id="result"></div>
     </div>
+    
     <script>
-        function calculate() {
-            let baseScores = {liq: 3, lux: 3, cloud: 3, ut: 3, stc: 3, js: 3, algo: 3, vwap: 2, rvol: 2, ema: 2, sd: 2, trend: 2, redk: 2, atr: 1};
-            let timeframeMultiplier = parseFloat(document.getElementById("timeframe").value);
+        function calculateScore() {
             let totalScore = 0;
-            for (let id in baseScores) {
-                if (document.getElementById(id).checked) {
-                    totalScore += baseScores[id] * timeframeMultiplier;
-                }
-            }
-            let convictionLevel;
-            if (totalScore <= 20) convictionLevel = "🔴 Weak Signal";
-            else if (totalScore <= 40) convictionLevel = "🟠 Cautionary Trade";
-            else if (totalScore <= 60) convictionLevel = "🟡 Moderate Conviction";
-            else if (totalScore <= 80) convictionLevel = "🟢 High Conviction";
-            else convictionLevel = "🚀 Elite Conviction";
-            document.getElementById("result").innerHTML = `Score: ${totalScore.toFixed(1)}<br>${convictionLevel}`;
+            let timeframeMultiplier = parseFloat(document.getElementById("timeframe").value);
+            document.querySelectorAll("#indicators input:checked").forEach(input => {
+                totalScore += parseInt(input.value);
+            });
+            totalScore *= timeframeMultiplier;
+            
+            let scoreText = "";
+            if (totalScore >= 80) scoreText = "🔥 Ultra-High Conviction Trade!";
+            else if (totalScore >= 60) scoreText = "🚀 Strong Conviction Trade";
+            else if (totalScore >= 40) scoreText = "📈 Medium Conviction Trade";
+            else if (totalScore >= 20) scoreText = "⚠️ Weak Conviction Trade";
+            else scoreText = "❌ No Trade";
+            
+            document.getElementById("result").innerHTML = `Score: ${totalScore.toFixed(1)}<br>${scoreText}`;
         }
     </script>
 </body>
