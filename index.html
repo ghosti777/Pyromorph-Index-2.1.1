@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🔥 Pyromorph Index 3.0 🔥</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; }
-        .container { max-width: 500px; margin: auto; padding: 20px; background: #222; border-radius: 10px; }
-        .indicator { display: flex; justify-content: space-between; margin: 10px 0; }
-        .timeframe, .conditions { margin-top: 15px; }
-        button { padding: 14px; margin-top: 20px; font-size: 22px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; }
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #111; color: #fff; margin: 0; padding: 0; }
+        .container { max-width: 500px; margin: auto; padding: 15px; background: #222; border-radius: 10px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; justify-content: center; }
+        .indicator { display: flex; justify-content: space-between; margin: 5px 0; width: 100%; }
+        .timeframe { margin: 10px 0; }
+        button { padding: 12px; margin-top: 10px; font-size: 20px; cursor: pointer; border-radius: 8px; background: #ff4500; color: #fff; border: none; width: 100%; }
         button:hover { background: #ff6347; }
-        .result { font-size: 28px; margin-top: 20px; font-weight: bold; }
-        select { padding: 10px; font-size: 18px; border-radius: 5px; background: #333; color: white; }
-        .analysis { margin-top: 15px; font-size: 22px; font-weight: bold; }
+        .result { font-size: 28px; margin-top: 10px; font-weight: bold; }
+        .timeframe select { padding: 8px; font-size: 16px; border-radius: 5px; background: #333; color: white; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h2>🔥 Pyromorph Index 3.0 🔥</h2>
-        <p>Select indicators, market conditions, and timeframe:</p>
+        <p>Select indicators and choose timeframe:</p>
 
         <div id="indicators">
             <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" value="4.5"></div>
+            <div class="indicator"><span>Dual Cloud</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="4"></div>
             <div class="indicator"><span>JS Squeeze Pro 2</span><input type="checkbox" value="4.5"></div>
@@ -35,23 +35,7 @@
             <div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" value="3.5"></div>
             <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" value="3.5"></div>
             <div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="3.5"></div>
-        </div>
-
-        <div class="conditions">
-            <label for="dualCloud">Dual Cloud Setup:</label>
-            <select id="dualCloud">
-                <option value="1.2">1️⃣ Best Case (Both Aligned)</option>
-                <option value="1.1">2️⃣ Strong Case (Big Cloud Aligned)</option>
-                <option value="0.9">3️⃣ Moderate Case (Small Cloud Aligned)</option>
-                <option value="0.7">4️⃣ Worst Case (Neither Aligned)</option>
-            </select>
-
-            <label for="atr">ATR Market Condition:</label>
-            <select id="atr">
-                <option value="1.2">1️⃣ Trending Market</option>
-                <option value="1.0">2️⃣ Neutral/Sideways</option>
-                <option value="0.8">3️⃣ Choppy/High Volatility</option>
-            </select>
+            <div class="indicator"><span>ATR-Based Volatility</span><input type="checkbox" value="3"></div>
         </div>
 
         <div class="timeframe">
@@ -66,7 +50,6 @@
         <button onclick="calculateScore()">🚀 Calculate 🚀</button>
 
         <div class="result" id="result">Score: --</div>
-        <div class="analysis" id="analysis"></div>
     </div>
 
     <script>
@@ -77,27 +60,24 @@
             });
 
             let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
-            let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
-            let atrMultiplier = parseFloat(document.getElementById('atr').value);
+            let finalScore = baseScore * timeframeMultiplier;
 
-            let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
             finalScore = Math.min(finalScore, 100); // Ensures max is 100
 
-            let analysisText = "";
+            let analysis = "";
             if (finalScore >= 90) {
-                analysisText = "🔥 Ultra High Conviction Trade 🔥";
+                analysis = "🚀 ULTRA Conviction Trade 🚀";
             } else if (finalScore >= 75) {
-                analysisText = "✅ Strong Conviction Trade";
+                analysis = "🔥 High Conviction Trade 🔥";
             } else if (finalScore >= 50) {
-                analysisText = "⚠️ Moderate Conviction Trade";
-            } else if (finalScore >= 30) {
-                analysisText = "❓ Low Conviction Trade";
+                analysis = "⚡ Moderate Conviction Trade ⚡";
+            } else if (finalScore >= 25) {
+                analysis = "⚠ Low Conviction Trade ⚠";
             } else {
-                analysisText = "🚫 No Conviction / Avoid Trade";
+                analysis = "❄ Weak Trade Setup ❄";
             }
 
-            document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
-            document.getElementById('analysis').innerText = analysisText;
+            document.getElementById('result').innerHTML = `Score: ${finalScore.toFixed(1)}<br>${analysis}`;
         }
     </script>
 
