@@ -35,18 +35,19 @@
                 <div class="indicator"><span>↳ Volume Confirmation 📊</span><input type="checkbox" id="liqVolume" value="1.1"></div>
             </div>
 
-            <div class="indicator">
-                <span>Lux Algo SuperTrend AI</span>
-                <input type="checkbox" id="supertrend" value="4.5">
-                <select id="supertrendStrength">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+            <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" id="superTrend" value="4.5"></div>
+            <div class="sub-options">
+                <label for="superTrendStrength">Supertrend Signal Strength:</label>
+                <select id="superTrendStrength">
+                    <option value="1.0">0️⃣ - Weak</option>
+                    <option value="0.9">1️⃣</option>
+                    <option value="0.85">2️⃣</option>
+                    <option value="0.8">3️⃣</option>
+                    <option value="0.75">4️⃣</option>
+                    <option value="0.7">5️⃣</option>
+                    <option value="0.65">6️⃣ - Strong</option>
                 </select>
+                <div class="indicator"><span>↳ Countertrend Signal ❌</span><input type="checkbox" id="superTrendCounter"></div>
             </div>
 
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
@@ -101,35 +102,27 @@
             baseScore += parseFloat(el.value);
         });
 
-        // Liquidity Grab Adjustments
-        if (document.getElementById('liqGrab').checked) {
-            if (document.getElementById('liqImpulse').checked) baseScore += parseFloat(document.getElementById('liqImpulse').value);
-            if (document.getElementById('liqCluster').checked) baseScore += parseFloat(document.getElementById('liqCluster').value);
-            if (document.getElementById('liqChoppy').checked) baseScore += parseFloat(document.getElementById('liqChoppy').value);
-            if (document.getElementById('liqVolume').checked) baseScore += parseFloat(document.getElementById('liqVolume').value);
+        if (document.getElementById('superTrend').checked) {
+            let strengthMultiplier = parseFloat(document.getElementById('superTrendStrength').value);
+            baseScore *= strengthMultiplier;
+
+            if (document.getElementById('superTrendCounter').checked) {
+                if (strengthMultiplier >= 0.85) baseScore -= 4.5;
+                else if (strengthMultiplier >= 0.8) baseScore -= 3;
+                else baseScore -= 1.5;
+            }
         }
 
-        // Supertrend AI Adjustments (Fixed Scaling)
-        if (document.getElementById('supertrend').checked) {
-            let strength = parseFloat(document.getElementById('supertrendStrength').value);
-            let baseSupertrendScore = 4.5; 
-            let strengthMultiplier = 0.5 + (strength * 0.1667); 
-            baseScore += baseSupertrendScore * strengthMultiplier;
-        }
+        let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
+        let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
+        let atrMultiplier = parseFloat(document.getElementById('atr').value);
 
-        let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) *
-                                    parseFloat(document.getElementById('dualCloud').value) *
-                                    parseFloat(document.getElementById('atr').value);
+        let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
         finalScore = Math.min(finalScore, 100);
 
-        document.getElementById('analysis').innerText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" :
-                                                       finalScore >= 75 ? "✅ Strong Conviction Trade" :
-                                                       finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
-                                                       finalScore >= 30 ? "❓ Low Conviction Trade" :
-                                                       "🚫 No Conviction / Avoid Trade";
-
+        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
-        document.getElementById('quote').innerText = `🐺 ${quotes[Math.floor(Math.random() * quotes.length)]}`;
+        document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
     }
 </script>
 </body>
