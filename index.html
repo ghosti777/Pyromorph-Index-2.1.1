@@ -128,16 +128,17 @@ body {
     .analysis { background: #222; border-radius: 8px; }
     .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; 
     }
+    
     .flames {
     position: fixed;
-    top: 10vh; /* Force a visible position */
-    left: 10vw; /* Force a visible position */
+    top: 38vh;  /* Adjust if needed */
+    left: 51vw; /* Adjust if needed */
     width: 525px;
     opacity: 0.9;
     pointer-events: none;
     z-index: 1000;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-}
+
     animation:fireIntensity 3.2s infinite cubic-bezier(0.3, 0.6, 0.4, 1) alternate-reverse 1.33s, 
     fireLightning 2.19s infinite steps(6, end) 1.11s,
     flicker 0.63s infinite cubic-bezier(0.5, 0.1, 0.75, 0.9) 0.29s;
