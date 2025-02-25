@@ -20,6 +20,8 @@ body {
     height: 100vh; /*Locks full viewport height */
     display: flex;
     flex-direction: column;
+    position: relative;
+    
 }
 
 /* 🔥 Background Dragon Layer (LOCKED) 🔥 */
@@ -35,6 +37,7 @@ body {
     background-repeat: no-repeat;
     z-index: -2; /* Sends behind everything */
     filter: brightness(1.2) contrast(1.1);
+    overflow:hidden;
     }
 
    .container {
@@ -163,9 +166,6 @@ body {
         <h1 class="main-title">🔥 The Pyromorph Index 🔥</h1>
         <h2 class="sub-title">3.6</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
-    
-    <img src="https://raw.githubusercontent.com/ghosti777/Pyromorph-Index-2.1.1/main/flames.PNG" class="flames">
-
 
 <div id="indicators">
 <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
