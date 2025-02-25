@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🔥 Pyromorph Index 3.5 🔥</title>
 <style>
-    body {
+body {
         font-family: Arial, sans-serif;
         text-align: center;
         background-color: #111;
@@ -13,20 +13,20 @@
         margin: 0;
         padding: 0;
         background-image: url('your-dragon-image.png');
-        background-size: cover;
+        background-size: cover; /* Ensures full visibility */
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
-
+   
     .container {
         max-width: 500px;
         margin: auto;
         padding: 15px;
-        background: rgba(34, 34, 34, 0.92);
+        background: rgba(34, 34, 34, 0.85); /* Slight transparency to show dragons */
         border-radius: 10px;
     }
-
+   
     h2 {
         font-size: 32px;
         font-weight: bold;
@@ -38,10 +38,10 @@
         justify-content: space-between;
         margin: 5px 0;
     }
-
+   
     .sub-options { padding-left: 20px; }
     .timeframe, .conditions { margin-top: 10px; }
-
+   
     button {
         padding: 12px;
         margin-top: 15px;
@@ -52,14 +52,14 @@
         color: #fff;
         border: none;
         width: 100%;
-        text-shadow: 0 0 15px #fff;
-        box-shadow: 0 0 20px #ff4500;
+        text-shadow: 0 0 12px #fff;
+        box-shadow: 0 0 20px #ff4500, 0 0 30px #ff6347;
         transition: all 0.3s ease-in-out;
     }
-
+   
     button:hover {
         background: #ff6347;
-        box-shadow: 0 0 25px #ff6347;
+        box-shadow: 0 0 30px #ff4500, 0 0 45px #ff6347;
         transform: scale(1.05);
     }
 
@@ -92,65 +92,65 @@
 <p>Select indicators, market conditions, and timeframe:</p>
 
 <div id="indicators">
-    <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
-    <div class="sub-options">
-        <div class="indicator"><span>↳ Impulse Move 🔥</span><input type="checkbox" id="liqImpulse" value="1.3"></div>
-        <div class="indicator"><span>↳ Cluster Signal 🌀</span><input type="checkbox" id="liqCluster" value="1.2"></div>
-        <div class="indicator"><span>↳ Choppy Grab ❌</span><input type="checkbox" id="liqChoppy" value="-0.8"></div>
-        <div class="indicator"><span>↳ Volume Confirmation 📊</span><input type="checkbox" id="liqVolume" value="1.1"></div>
-    </div>
+<div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
+<div class="sub-options">
+<div class="indicator"><span>↳ Impulse Move 🔥</span><input type="checkbox" id="liqImpulse" value="1.3"></div>
+<div class="indicator"><span>↳ Cluster Signal 🌀</span><input type="checkbox" id="liqCluster" value="1.2"></div>
+<div class="indicator"><span>↳ Choppy Grab ❌</span><input type="checkbox" id="liqChoppy" value="-0.8"></div>
+<div class="indicator"><span>↳ Volume Confirmation 📊</span><input type="checkbox" id="liqVolume" value="1.1"></div>
+</div>
 
-    <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" id="superTrend" value="4.5"></div>
-    <div class="sub-options">
-        <label for="superTrendStrength">↳ Strength Level:</label>
-        <select id="superTrendStrength">
-            <option value="0">0️⃣ (Weak)</option>
-            <option value="1">1️⃣</option>
-            <option value="2">2️⃣</option>
-            <option value="3">3️⃣</option>
-            <option value="4">4️⃣</option>
-            <option value="5">5️⃣</option>
-            <option value="6">6️⃣ (Strongest)</option>
-        </select>
-        <div class="indicator"><span>↳ Countertrend ⚠️</span><input type="checkbox" id="superTrendCounter" value="0"></div>
-    </div>
+<div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" id="superTrend" value="4.5"></div>
+<div class="sub-options">
+<label for="superTrendStrength">↳ Strength Level:</label>
+<select id="superTrendStrength">
+<option value="0">0️⃣ (Weak)</option>
+<option value="1">1️⃣</option>
+<option value="2">2️⃣</option>
+<option value="3">3️⃣</option>
+<option value="4">4️⃣</option>
+<option value="5">5️⃣</option>
+<option value="6">6️⃣ (Strongest)</option>
+</select>
+<div class="indicator"><span>↳ Countertrend ⚠️</span><input type="checkbox" id="superTrendCounter" value="0"></div>
+</div>
 
-    <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
-    <div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="4"></div>
-    <div class="indicator"><span>JS Squeeze Pro 2</span><input type="checkbox" value="4.5"></div>
-    <div class="indicator"><span>AlgoAlpha SuperTrend (Entry/Exit)</span><input type="checkbox" value="4.5"></div>
-    <div class="indicator"><span>VWAP</span><input type="checkbox" value="3.5"></div>
-    <div class="indicator"><span>Relative Volume (RVOL)</span><input type="checkbox" value="3.5"></div>
-    <div class="indicator"><span>EMA/SMA Resistance</span><input type="checkbox" value="3.5"></div>
-    <div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" value="3.5"></div>
-    <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" value="3.5"></div>
-    <div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
+<div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="4"></div>
+<div class="indicator"><span>JS Squeeze Pro 2</span><input type="checkbox" value="4.5"></div>
+<div class="indicator"><span>AlgoAlpha SuperTrend (Entry/Exit)</span><input type="checkbox" value="4.5"></div>
+<div class="indicator"><span>VWAP</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>Relative Volume (RVOL)</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>EMA/SMA Resistance</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="3.5"></div>
 </div>
 
 <div class="conditions">
-    <label for="dualCloud">Dual Cloud Setup:</label>
-    <select id="dualCloud">
-        <option value="1.2">1️⃣ Best Case (Both Aligned)</option>
-        <option value="1.1">2️⃣ Strong Case (Big Cloud Aligned)</option>
-        <option value="0.9">3️⃣ Moderate Case (Small Cloud Aligned)</option>
-        <option value="0.7">4️⃣ Worst Case (Neither Aligned)</option>
-    </select>
+<label for="dualCloud">Dual Cloud Setup:</label>
+<select id="dualCloud">
+<option value="1.2">1️⃣ Best Case (Both Aligned)</option>
+<option value="1.1">2️⃣ Strong Case (Big Cloud Aligned)</option>
+<option value="0.9">3️⃣ Moderate Case (Small Cloud Aligned)</option>
+<option value="0.7">4️⃣ Worst Case (Neither Aligned)</option>
+</select>
 
-    <label for="atr">ATR Market Condition:</label>
-    <select id="atr">
-        <option value="1.2">1️⃣ Trending Market</option>
-        <option value="1.0">2️⃣ Neutral/Sideways</option>
-        <option value="0.8">3️⃣ Choppy/High Volatility</option>
-    </select>
+<label for="atr">ATR Market Condition:</label>
+<select id="atr">
+<option value="1.2">1️⃣ Trending Market</option>
+<option value="1.0">2️⃣ Neutral/Sideways</option>
+<option value="0.8">3️⃣ Choppy/High Volatility</option>
+</select>
 </div>
 
 <div class="timeframe">
-    <label for="timeframe">Select Timeframe:</label>
-    <select id="timeframe">
-        <option value="1.3">1M-5M</option>
-        <option value="1.5">15M</option>
-        <option value="1.8">30M</option>
-    </select>
+<label for="timeframe">Select Timeframe:</label>
+<select id="timeframe">
+<option value="1.3">1M-5M</option>
+<option value="1.5">15M</option>
+<option value="1.8">30M</option>
+</select>
 </div>
 
 <button onclick="calculateScore()">🚀 Calculate 🚀</button>
@@ -162,16 +162,32 @@
 
 <script>
 function calculateScore() {
-    let baseScore = 0;
-    document.querySelectorAll('#indicators input:checked').forEach(el => {
-        baseScore += parseFloat(el.value);
-    });
+let baseScore = 0;
+document.querySelectorAll('#indicators input:checked').forEach(el => {
+baseScore += parseFloat(el.value);
+});
 
-    let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
-    finalScore = Math.min(finalScore, 100);
+if (document.getElementById('superTrend').checked) {
+let strength = parseInt(document.getElementById('superTrendStrength').value);
+baseScore += strength * 0.5;
+if (document.getElementById('superTrendCounter').checked) {
+let strength = parseInt(document.getElementById('superTrendStrength').value);
+baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
+}
+}
+let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
+finalScore = Math.min(finalScore, 100);
 
-    document.getElementById('analysis').innerText = `🔥 Conviction Level: ${finalScore.toFixed(1)}`;
-    document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
+let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+let analysisText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" :
+finalScore >= 75 ? "✅ Strong Conviction Trade" :
+finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
+finalScore >= 30 ? "❓ Low Conviction Trade" :
+"🚫 No Conviction / Avoid Trade";
+
+document.getElementById('analysis').innerText = analysisText;
+document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
+document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
 }
 </script>
 
