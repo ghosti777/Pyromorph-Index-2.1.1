@@ -104,11 +104,12 @@
 
         if (document.getElementById('superTrend').checked) {
             let strength = parseInt(document.getElementById('superTrendStrength').value);
-            let adjustedScore = 4.5 * (0.5 + (strength / 12)); 
-            baseScore += adjustedScore; 
+            baseScore += strength * 0.5; 
 
+            // Corrected countertrend penalty
             if (document.getElementById('superTrendCounter').checked) {
-                baseScore -= adjustedScore * 1.25; 
+                let counterPenalty = 2.5 - (strength * 0.3);
+                baseScore -= counterPenalty; 
             }
         }
 
@@ -117,10 +118,10 @@
 
         let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
         let analysisText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" :
-                           finalScore >= 75 ? "✅ Strong Conviction Trade" :
-                           finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
-                           finalScore >= 30 ? "❓ Low Conviction Trade" :
-                           "🚫 No Conviction / Avoid Trade";
+                          finalScore >= 75 ? "✅ Strong Conviction Trade" :
+                          finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
+                          finalScore >= 30 ? "❓ Low Conviction Trade" :
+                          "🚫 No Conviction / Avoid Trade";
 
         document.getElementById('analysis').innerText = analysisText;
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
