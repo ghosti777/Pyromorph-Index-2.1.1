@@ -22,7 +22,9 @@ body {
     background-attachment: fixed;
     filter: brightness(1.2) contrast(1.1); /* Enhances visibility */
     overflow-y:auto; /*Prevents unnecessary scrolling */
-    height: auto; /* Locks full viewport height */
+    height: 100%; /* Locks full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
    .container {
@@ -30,9 +32,9 @@ body {
     margin: auto;
     padding: 15px;
     background: none !important;
-    border-radius: 10px;
-    height: 100vh; /* Ensures full page height */
-    overflow-y: auto; /* Allows scrolling for content */
+    border-radius: 10px 
+    flex-grow: 1;
+    padding-bottom: 100px;
     }
 
     .title-container {
