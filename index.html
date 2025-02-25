@@ -111,7 +111,12 @@
         let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
         finalScore = Math.min(finalScore, 100);
 
+        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        let analysisText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" : finalScore >= 75 ? "✅ Strong Conviction Trade" : "⚠️ Moderate Conviction Trade";
+
+        document.getElementById('analysis').innerText = analysisText;
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
+        document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
     }
 </script>
 
