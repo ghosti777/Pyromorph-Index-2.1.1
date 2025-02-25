@@ -106,15 +106,15 @@ body
     .analysis { background: #222; border-radius: 8px; }
     .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; }
     
-    
-    .flames {
+    /* 🔥 Flame Styling 🔥 */
+.flames {
     position: absolute;
-    top: 50%;  /* Adjust to position flames */
+    top: 50%;  /* Adjust as needed */
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px; /* Adjust flame size */
-    opacity: 0.9; /* Adjust transparency */
-    pointer-events: none; /* Prevents blocking clicks */
+    width: 300px;
+    opacity: 0.9;
+    pointer-events: none; /* So it doesn't block clicks */
     
     /* Glowing Flicker Effect */
     filter: drop-shadow(0px 0px 20px #ff4500) brightness(1.5);
@@ -125,6 +125,7 @@ body
 @keyframes flameGlow {
     0% { filter: drop-shadow(0px 0px 15px #ff4500) brightness(1.2); }
     100% { filter: drop-shadow(0px 0px 25px #ff6347) brightness(1.7); }
+    
 }
     
     
@@ -140,6 +141,8 @@ body
 <h1 class="main-title">🔥 The Pyromorph Index 🔥</h1>
 <h2 class="sub-title">3.5.4</h2>
 <p>Select indicators, market conditions, and timeframe:</p>
+
+    </body>
 
 <div id="indicators">
 <div class="indicator"><span>Liquidity Grabs</span><input type="checkbox" id="liqGrab" value="4.5"></div>
