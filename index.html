@@ -21,7 +21,10 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     filter: brightness(1.2) contrast(1.1); /* Enhances visibility */
-    }
+    overflow: hidden; /* Prevents unnecessary scrolling */
+    height: 100vh; /* Locks full viewport height */
+}
+
    
     .container {
     max-width: 500px;
@@ -107,7 +110,8 @@ body {
     .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; 
     }
     .flames {
-    position: absolute;
+    position: fixed; /* Keeps it from pushing other elements */
+    z-index: -1; /* Sends it behind everything */
     top: 60%;/*Raise slightly to align */
     left:75%;
     transform: translate(-50%, -50%);
