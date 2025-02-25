@@ -22,7 +22,7 @@ body {
     background-attachment: fixed;
     filter: brightness(1.2) contrast(1.1); /* Enhances visibility */
     overflow-y:auto; /*Prevents unnecessary scrolling */
-    height: 100%; /* Locks full viewport height */
+    min-height: 100vh; /*Locks full viewport height */
     display: flex;
     flex-direction: column;
 }
@@ -32,7 +32,7 @@ body {
     margin: auto;
     padding: 15px;
     background: none !important;
-    border-radius: 10px 
+    border-radius: 10px;
     flex-grow: 1;
     padding-bottom: 100px;
     }
@@ -115,8 +115,8 @@ body {
     .flames {
     position: fixed; /* Keeps it from pushing other elements */
     z-index: -1; /* Sends it behind everything */
-    top: 43%; /*Raise slightly to align */
-    left: 50%;
+    top: 42.5%; /*Raise slightly to align */
+    left: 51%;
     transform: translate(-50%, -50%);
     width: 575px; /* Adjust to match scaled background */
     opacity: 1; /* Stronger presence */
