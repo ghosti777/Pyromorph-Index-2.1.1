@@ -95,43 +95,60 @@
     </div>
 
 <script>
-    function calculateScore() {
-        let baseScore = 0;
+function calculateScore() {
+    let baseScore = 0;
+    let countertrendPenalty = 1.0; // Default multiplier (no penalty)
 
-        // Apply indicator values
-        document.querySelectorAll('#indicators input:checked').forEach(el => {
-            baseScore += parseFloat(el.value);
-        });
+    // Loop through indicators and add their values
+    document.querySelectorAll('#indicators input:checked').forEach(el => {
+        baseScore += parseFloat(el.value) || 0; // Prevents NaN errors
+    });
 
-        // Liquidity Grab Adjustments
-        if (document.getElementById('liqGrab').checked) {
-            if (document.getElementById('liqImpulse').checked) baseScore += parseFloat(document.getElementById('liqImpulse').value);
-            if (document.getElementById('liqCluster').checked) baseScore += parseFloat(document.getElementById('liqCluster').value);
-            if (document.getElementById('liqChoppy').checked) baseScore += parseFloat(document.getElementById('liqChoppy').value);
-            if (document.getElementById('liqVolume').checked) baseScore += parseFloat(document.getElementById('liqVolume').value);
-        }
-
-        // SuperTrend AI Adjustments
-        if (document.getElementById('superTrend').checked) {
-            let stBaseValue = 4.5;  
-            let stStrengthMultiplier = parseFloat(document.getElementById('stStrength').value);
-            let stAdjustedValue = stBaseValue * stStrengthMultiplier; 
-
-            baseScore += stAdjustedValue; 
-
-            if (document.getElementById('stCounterTrend').checked) {
-                baseScore -= 2.0; 
-            }
-        }
-
-        let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
-        finalScore = Math.min(finalScore, 100);
-
-        let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        document.getElementById('analysis').innerText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" : finalScore >= 75 ? "✅ Strong Conviction Trade" : finalScore >= 50 ? "⚠️ Moderate Conviction Trade" : finalScore >= 30 ? "❓ Low Conviction Trade" : "🚫 No Conviction / Avoid Trade";
-        document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
-        document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
+    // Apply Liquidity Grab Adjustments if selected
+    if (document.getElementById('liqGrab').checked) {
+        if (document.getElementById('liqImpulse').checked) baseScore *= 1.3;
+        if (document.getElementById('liqCluster').checked) baseScore *= 1.2;
+        if (document.getElementById('liqChoppy').checked) baseScore *= 0.8;
+        if (document.getElementById('liqVolume').checked) baseScore *= 1.1;
     }
+
+    // Apply SuperTrend Strength Scaling (if selected)
+    let superTrendSelect = document.getElementById('superTrendStrength');
+    let superTrendStrength = parseFloat(superTrendSelect?.value || 1.0);
+    baseScore *= superTrendStrength; 
+
+    // Apply Countertrend Penalty (if selected)
+    if (document.getElementById('counterTrend').checked) countertrendPenalty = 0.85;
+    
+    // Apply Market Condition Multipliers
+    let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value) || 1;
+    let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value) || 1;
+    let atrMultiplier = parseFloat(document.getElementById('atr').value) || 1;
+
+    // Final Calculation (ensures max score of 100)
+    let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier * countertrendPenalty;
+    finalScore = Math.min(finalScore, 100); 
+
+    // Set Analysis Text
+    let analysisText = "";
+    if (finalScore >= 90) {
+        analysisText = "🔥 Ultra High Conviction Trade 🔥";
+    } else if (finalScore >= 75) {
+        analysisText = "✅ Strong Conviction Trade";
+    } else if (finalScore >= 50) {
+        analysisText = "⚠️ Moderate Conviction Trade";
+    } else if (finalScore >= 30) {
+        analysisText = "❓ Low Conviction Trade";
+    } else {
+        analysisText = "🚫 No Conviction / Avoid Trade";
+    }
+
+    // Display Score, Analysis, and Random Quote
+    let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
+    document.getElementById('analysis').innerText = analysisText;
+    document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
+}
 </script>
 </body>
 </html>
