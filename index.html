@@ -103,6 +103,29 @@ body {
     .result { background: #333; border-radius: 8px; }
     .analysis { background: #222; border-radius: 8px; }
     .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; }
+    
+    <img src="https://raw.githubusercontent.com/ghosti777/Pyromorph-Index-2.1.1/main/flames.PNG" class="flames">
+    .flames {
+    position: absolute;
+    top: 50%;  /* Adjust to position flames */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust flame size */
+    opacity: 0.9; /* Adjust transparency */
+    pointer-events: none; /* Prevents blocking clicks */
+    
+    /* Glowing Flicker Effect */
+    filter: drop-shadow(0px 0px 20px #ff4500) brightness(1.5);
+    animation: flameGlow 1.8s infinite alternate;
+}
+
+/* 🔥 Smooth Flicker Animation 🔥 */
+@keyframes flameGlow {
+    0% { filter: drop-shadow(0px 0px 15px #ff4500) brightness(1.2); }
+    100% { filter: drop-shadow(0px 0px 25px #ff6347) brightness(1.7); }
+}
+    
+    
 </style>
 <script src="quotes.js"></script>
 </head>
