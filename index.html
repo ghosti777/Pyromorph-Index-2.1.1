@@ -99,26 +99,24 @@
     function calculateScore() {
         let baseScore = 0;
         document.querySelectorAll('#indicators input:checked').forEach(el => {
-            baseScore += parseFloat(el.value);
+            baseScore += parseFloat(el.value) || 0;
         });
 
         if (document.getElementById('superTrend').checked) {
-            let strengthMultiplier = parseFloat(document.getElementById('superTrendStrength').value);
+            let strengthMultiplier = parseFloat(document.getElementById('superTrendStrength').value) || 1.0;
             baseScore *= strengthMultiplier;
 
             if (document.getElementById('superTrendCounter').checked) {
-                if (strengthMultiplier >= 0.85) baseScore -= 4.5;
-                else if (strengthMultiplier >= 0.8) baseScore -= 3;
-                else baseScore -= 1.5;
+                baseScore -= (4.5 * (2 - strengthMultiplier)); 
             }
         }
 
-        let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value);
-        let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value);
-        let atrMultiplier = parseFloat(document.getElementById('atr').value);
+        let timeframeMultiplier = parseFloat(document.getElementById('timeframe').value) || 1.0;
+        let dualCloudMultiplier = parseFloat(document.getElementById('dualCloud').value) || 1.0;
+        let atrMultiplier = parseFloat(document.getElementById('atr').value) || 1.0;
 
         let finalScore = baseScore * timeframeMultiplier * dualCloudMultiplier * atrMultiplier;
-        finalScore = Math.min(finalScore, 100);
+        finalScore = Math.max(0, Math.min(finalScore, 100));
 
         let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
