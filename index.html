@@ -136,37 +136,17 @@ body {
     pointer-events: none;
     z-index: -1;
     
-/* 🔥 Stronger Glow & Flicker */
 .flames {
     filter: drop-shadow(0px 0px 50px #ff4500) brightness(2);
-    animation: fireEffect 3.5s infinite alternate ease-in-out;
+    animation: testFire 3s infinite alternate ease-in-out;
 }
 
-/* 🔥 INTENSIFIED FIRE & ICE ANIMATION 🔥 */
-@keyframes fireEffect {
-    0% { 
-        filter: drop-shadow(0px 0px 50px #ff4500) brightness(2.5); 
-    } /* Deep Orange */
-    15% { 
-        filter: drop-shadow(0px 0px 80px #ff2d00) brightness(3);  
-    } /* Intense Red */
-    30% { 
-        filter: drop-shadow(0px 0px 100px #ff0000) brightness(3.5); 
-    } /* Peak Heat - Blood Red */
-    50% { 
-        filter: drop-shadow(0px 0px 120px #ff4500) brightness(3.2);  
-    } /* 🔥🔥 Bright Orange */
-    65% { 
-        filter: drop-shadow(0px 0px 90px #00a2ff) brightness(3.5);  
-    } /* 💀 Cold Fire Begins - Blue Hint */
-    80% { 
-        filter: drop-shadow(0px 0px 110px #00ccff) brightness(3.8);  
-    } /* ⚡ Icy Blue Phase */
-    100% { 
-        filter: drop-shadow(0px 0px 140px #00e6ff) brightness(4);  
-    } /* ❄ MAX Ice Burn */
+@keyframes testFire {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
 }
-    
+
+
 </style>
 <script src="quotes.js"></script>
 </head>
