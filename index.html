@@ -136,32 +136,63 @@ body {
     pointer-events: none;
     z-index: -1;
       filter: drop-shadow(0px 0px 50px #ff4500) brightness(2);
-    animation: fireEffect 2s infinite alternate ease-in-out;
+    animation: fireEffect 6s infinite alternate ease-in-out;
 }
 
-/* 🔥 INTENSIFIED FIRE & ICE ANIMATION 🔥 */
 @keyframes fireEffect {
     0% { 
-        filter: drop-shadow(0px 0px 50px #ff4500) brightness(2.5); 
-    } /* Deep Orange */
+        filter: 
+            drop-shadow(0px 0px 30px #ff4500) brightness(2) 
+            drop-shadow(0px 0px 15px rgba(255, 85, 0, 0.8));
+        transform: translate(-50%, -50%) scale(1);
+    } /* 🔥 Deep Orange - Base Glow */
+
     15% { 
-        filter: drop-shadow(0px 0px 80px #ff2d00) brightness(3);  
-    } /* Intense Red */
+        filter: 
+            drop-shadow(0px 0px 50px #ff2d00) brightness(2.5) 
+            drop-shadow(0px 0px 25px rgba(255, 0, 0, 0.9));
+        transform: translate(-50%, -50%) scale(1.05);
+    } /* 🔥 Intense Red Core */
+
     30% { 
-        filter: drop-shadow(0px 0px 100px #ff0000) brightness(3.5); 
-    } /* Peak Heat - Blood Red */
-    50% { 
-        filter: drop-shadow(0px 0px 120px #ff4500) brightness(3.2);  
-    } /* 🔥🔥 Bright Orange */
-    65% { 
-        filter: drop-shadow(0px 0px 90px #00a2ff) brightness(3.5);  
-    } /* 💀 Cold Fire Begins - Blue Hint */
-    80% { 
-        filter: drop-shadow(0px 0px 110px #00ccff) brightness(3.8);  
-    } /* ⚡ Icy Blue Phase */
+        filter: 
+            drop-shadow(0px 0px 80px #ff0000) brightness(3) 
+            drop-shadow(0px 0px 40px rgba(255, 0, 0, 1));
+        transform: translate(-50%, -50%) scale(1);
+    } /* 🔥 Max Blood Red */
+
+    45% { 
+        filter: 
+            drop-shadow(0px 0px 110px #ff4500) brightness(2.7) 
+            drop-shadow(0px 0px 90px rgba(255, 100, 0, 0.9));
+        transform: translate(-50%, -50%) scale(1.1);
+    } /* 🔥 Fiery Burst */
+
+    60% { 
+        filter: 
+            drop-shadow(0px 0px 90px #007bff) brightness(3) 
+            drop-shadow(0px 0px 50px rgba(0, 123, 255, 0.8));
+        transform: translate(-50%, -50%) scale(1.05);
+    } /* 🔥🔥 The BLUE Awakens */
+
+    75% { 
+        filter: 
+            drop-shadow(0px 0px 120px #00a2ff) brightness(3.2) 
+            drop-shadow(0px 0px 80px rgba(0, 162, 255, 0.9));
+        transform: translate(-50%, -50%) scale(1);
+    } /* 💀 ICE PHASE - Cold Fire Begins */
+
+    90% { 
+        filter: 
+            drop-shadow(0px 0px 150px #00ccff) brightness(3.5) 
+            drop-shadow(0px 0px 100px rgba(0, 204, 255, 1));
+        transform: translate(-50%, -50%) scale(1.1);
+    } /* ⚡ True Icy Blue Burn */
+
     100% { 
-        filter: drop-shadow(0px 0px 140px #00e6ff) brightness(4);  
-    } /* ❄ MAX Ice Burn */
+        filter: 
+            drop-shadow(0px 0px 130px #ff4500) brightness(2.8) 
+            drop-shadow(
 }
 
 
