@@ -58,15 +58,18 @@ body {
         
     h1.main-title {
     font-family: 'Uncial Antiqua', sans-serif;
-    font-size: 24; /* Slightly larger for presence */
-    font-weight: 700; /* Maximum boldness */
-    color: #111; /* Almost black for deep contrast */
+    font-size: 24px; /* Slightly reduced size */
+    font-weight: 900; /* Maximum boldness */
+    color: #111; /* Deep black for contrast */
     text-shadow: 
-        /* Dark Red Inner Glow */
         0px 0px 12px rgba(255, 69, 0, 0.6); /* Subtle Fire Glow */
     text-align: center;
-    letter-spacing: 1px; /* Slight spacing for a sharper look */
+    letter-spacing: 0.5px; /* Slight spacing for sharpness */
     margin-bottom: 5px;
+    white-space: nowrap; /* Forces it to stay on one line */
+    overflow: hidden;
+    max-width: 100%; /* Prevents unintended wrapping */
+}
 }
 
     h2.sub-title {
@@ -139,7 +142,7 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: fireIntensity 3.5s infinite alternate ease-in-out, fireLightning 2.5s infinite alternate ease-in-out, flicker 2s infinite alternate ease-in-out;
+    animation: fireIntensity 3.5s infinite alternate ease-in-out, fireLightning 2.5s infinite alternate ease-in-out, flicker .5s infinite alternate ease-in-out;
 }
 
 /* 🔥 INTENSIFIED FIRE ANIMATION 🔥 */
