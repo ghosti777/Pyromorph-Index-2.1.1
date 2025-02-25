@@ -13,13 +13,11 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('your-dragon-image.png');
-    background-size: contain; /* Ensures full dragon visibility */
-    background-position: center; /* Centers the full image */
+    background-size: 100% auto; /* Full width, auto height */
+    background-position: center top; /* Keep it centered */
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity: 1; /* Remove unnecessary fading */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    opacity: 1; /* Ensure full visibility */
     }
    
     .container {
@@ -28,7 +26,6 @@ body {
     padding: 15px;
     background: rgba(0, 0, 0, 0.75); /* Darker so text pops */
     border-radius: 10px;
-    backdrop-filter: blur(4px); /* Softens the background slightly */
     }
    
     h2 {
