@@ -135,26 +135,24 @@ body {
     opacity: 1; /* Stronger presence */
     pointer-events: none;
     z-index: -1;
-          filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: chaoticFlicker 0.15s infinite alternate ease-in-out,
-               blueCoreBurn 1.8s infinite alternate ease-in-out;
+    filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
+    animation: iceBurn 3.5s infinite alternate ease-in-out;
 }
 
-/* 🔥 Chaotic Fire Flicker (Unstable Flames) */
-@keyframes chaoticFlicker {
-    0% { filter: drop-shadow(0px 0px 60px #ff4500) brightness(2.2); }
-    20% { filter: drop-shadow(0px 0px 90px #ff2d00) brightness(2.8); }
-    40% { filter: drop-shadow(0px 0px 110px #ff0000) brightness(3.5); }
-    60% { filter: drop-shadow(0px 0px 130px #ff4500) brightness(3.0); }
-    80% { filter: drop-shadow(0px 0px 70px #ff2d00) brightness(2.6); }
-    100% { filter: drop-shadow(0px 0px 90px #ff4500) brightness(3.2); }
-}
-
-/* 🔥 Intense Blue Core Burn */
-@keyframes blueCoreBurn {
-    0% { filter: drop-shadow(0px 0px 50px #ff4500) brightness(2.5) drop-shadow(0px 0px 30px rgba(0, 123, 255, 0.6)); }
-    50% { filter: drop-shadow(0px 0px 70px #ff0000) brightness(3) drop-shadow(0px 0px 50px rgba(0, 162, 255, 0.8)); }
-    100% { filter: drop-shadow(0px 0px 100px #ff4500) brightness(3) drop-shadow(0px 0px 70px rgba(0, 204, 255, 1)); }
+/* ❄️ **Icy Blue Burn Effect** ❄️ */
+@keyframes iceBurn {
+    0% { 
+        filter: drop-shadow(0px 0px 35px #004cff) brightness(2.2); 
+    } /* Deep Cold Blue */
+    30% { 
+        filter: drop-shadow(0px 0px 50px #008cff) brightness(2.6); 
+    } /* Brighter Blue Core */
+    60% { 
+        filter: drop-shadow(0px 0px 70px #00aaff) brightness(3); 
+    } /* Intense Arctic Burn */
+    100% { 
+        filter: drop-shadow(0px 0px 90px #ffffff) brightness(3.5); 
+    } /* Blinding White Heat */
 }
 
 
