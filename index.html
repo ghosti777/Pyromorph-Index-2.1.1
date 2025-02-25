@@ -128,7 +128,7 @@ body {
     }
     .flames {
     position: fixed; /* Ensures it stays in place */
-    top: 39vh; /* Locks vertical position */
+    top: 38.5vh; /* Locks vertical position */
     left: 51vw; /* Locks horizontal position */ 
     transform: translate(-50%, -50%);
     width: 540px; /* Adjust to match scaled background */
@@ -137,17 +137,19 @@ body {
     z-index: 0;
     
     /* 🔥 Stronger Glow & Flicker */
+    /* 🔥 Stronger Glow & Flicker */
     filter: drop-shadow(0px 0px 50px #ff4500) brightness(2);
-    animation: fireBurn 2s infinite alternate ease-in-out;
+    animation: fireBurn 5s infinite alternate ease-in-out;
 }
 
-/* 🔥 Intense Fire Animation 🔥 */
+/*/* 🔥 ENHANCED BURN CYCLE 🔥 */
 @keyframes fireBurn {
-    0% { filter: drop-shadow(0px 0px 30px #ff4500) brightness(1.8); }
-    25% { filter: drop-shadow(0px 0px 50px #ff2d00) brightness(2.5); } /* Stronger Red Core */
-    50% { filter: drop-shadow(0px 0px 60px #ff0000) brightness(3); } /* Peak Burn */
-    75% { filter: drop-shadow(0px 0px 70px #ff4500) brightness(2.7); } /* Orange Inferno */
-    100% { filter: drop-shadow(0px 0px 70px #007bff) brightness(4); } /* Subtle Blue at Edges */
+    0% { filter: drop-shadow(0px 0px 35px #ff4500) brightness(1.8); } /* Orange start */
+    20% { filter: drop-shadow(0px 0px 50px #ff2d00) brightness(2.5); } /* Deeper Red */
+    40% { filter: drop-shadow(0px 0px 70px #ff0000) brightness(3); } /* Peak Red Burn */
+    60% { filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.7); } /* Intense Orange Glow */
+    80% { filter: drop-shadow(0px 0px 90px #ff4500) brightness(2.7); } /* Holding Fire */
+    100% { filter: drop-shadow(0px 0px 120px #007bff) brightness(3); } /* Long Icy Blue Burn */
 }
     
 </style>
