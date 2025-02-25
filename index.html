@@ -131,7 +131,7 @@ body {
     top: 38vh; /* Locks vertical position */
     left: 51vw; /* Locks horizontal position */ 
     transform: translate(-50%, -50%);
-    width: 540px; /* Adjust to match scaled background */
+    width: 525px; /* Adjust to match scaled background */
     opacity: 1; /* Stronger presence */
     pointer-events: none;
     z-index: -1;
@@ -142,7 +142,7 @@ body {
 }
 
 /* 🔥 INTENSIFIED FIRE ANIMATION 🔥 */
-@@keyframes fireBurn {
+@keyframes fireBurn {
     0% { 
         filter: drop-shadow(0px 0px 40px #ff4500) brightness(2.2); 
     } /* Deep Orange */
@@ -153,16 +153,18 @@ body {
         filter: drop-shadow(0px 0px 80px #ff0000) brightness(3); 
     } /* Max Heat - Blood Red */
     60% { 
-        filter: drop-shadow(0px 0px 100px #ff4500) brightness(2.7); 
-    } /* Orange-Red Glow Expands */
+        filter: drop-shadow(0px 0px 110px #ff4500) brightness(2.7) 
+                drop-shadow(0px 0px 80px #007bff);  
+    } /* 🔥🔥 Injecting Blue Glow */
     80% { 
-        filter: drop-shadow(0px 0px 90px #007bff) brightness(2.5); 
-    } /* 🔥🔥 Icy Blue Hits (Longer Duration) */
+        filter: drop-shadow(0px 0px 100px #ff4500) brightness(2.5) 
+                drop-shadow(0px 0px 90px #00a2ff);  
+    } /* 💀 Cold Fire Begins */
     100% { 
-        filter: drop-shadow(0px 0px 110px #00a2ff) brightness(2.8); 
-    } /* ⚡ True Electric Blue Burn */
-}
-}
+        filter: drop-shadow(0px 0px 130px #ff4500) brightness(2.8) 
+                drop-shadow(0px 0px 120px #00ccff);  
+    } /* ⚡ True Icy Blue Burn */
+
 }
     
 </style>
