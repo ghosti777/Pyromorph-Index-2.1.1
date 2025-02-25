@@ -136,23 +136,43 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: iceBurn 3.5s infinite alternate ease-in-out;
+   /*🔥 Apply Hue Shift + Opacity Flicker */
+    animation: iceBurn 2.5s infinite alternate ease-in-out;
 }
 
-/* ❄️ **Icy Blue Burn Effect** ❄️ */
+/* ❄️ Frozen Flame Animation */
 @keyframes iceBurn {
     0% { 
-        filter: drop-shadow(0px 0px 35px #004cff) brightness(2.2); 
-    } /* Deep Cold Blue */
-    30% { 
-        filter: drop-shadow(0px 0px 50px #008cff) brightness(2.6); 
-    } /* Brighter Blue Core */
-    60% { 
-        filter: drop-shadow(0px 0px 70px #00aaff) brightness(3); 
-    } /* Intense Arctic Burn */
+        filter: 
+            drop-shadow(0px 0px 40px #007bff) brightness(2.2) 
+            hue-rotate(0deg);
+        opacity: 0.8;
+    }
+    25% { 
+        filter: 
+            drop-shadow(0px 0px 50px #00a2ff) brightness(2.5) 
+            hue-rotate(15deg);
+        opacity: 1;
+    }
+    50% { 
+        filter: 
+            drop-shadow(0px 0px 60px #00ccff) brightness(3) 
+            hue-rotate(30deg);
+        opacity: 0.7;
+    }
+    75% { 
+        filter: 
+            drop-shadow(0px 0px 70px #00e6ff) brightness(2.7) 
+            hue-rotate(20deg);
+        opacity: 0.9;
+    }
     100% { 
-        filter: drop-shadow(0px 0px 90px #ffffff) brightness(3.5); 
-    } /* Blinding White Heat */
+        filter: 
+            drop-shadow(0px 0px 50px #ffffff) brightness(3) 
+            hue-rotate(10deg);
+        opacity: 1;
+    }
+}
 }
 
 
