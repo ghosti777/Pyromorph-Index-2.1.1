@@ -13,8 +13,11 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('your-dragon-image.png');
-    background-size: cover; /* Ensures full visibility of dragons */
-    background-position: center top; /* Positions dragons properly */
+    background-size: contain; /* Ensures full dragon visibility */
+    background-position: center; /* Centers the full image */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 1; /* Remove unnecessary fading */
     background-repeat: no-repeat;
     background-attachment: fixed;
     }
