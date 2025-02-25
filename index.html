@@ -108,23 +108,24 @@ body {
     }
     
     .flames {
-    position: fixed; /* Sticks in place */
-    top: 50%;  /* Adjust position */
-    left: 50%;
+    position: absolute;
+    top: 58%;  /* Move it lower if needed */
+    left: 53%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    opacity: 0.9;
-    pointer-events: none; /* Doesn't block clicks */
+    width: 450px; /* Adjust for the new background scale */
+    opacity: 0.95; /* Make it pop more */
+    pointer-events: none; /* Prevent it from blocking clicks */
     
-    /* Glowing Flicker Effect */
-    filter: drop-shadow(0px 0px 20px #ff4500) brightness(1.5);
-    animation: flameGlow 1.8s infinite alternate;
-    }
+    /* 🔥 More Intense Glow */
+    filter: drop-shadow(0px 0px 30px #ff4500) brightness(1.7);
+    animation: fireEffect 2s infinite alternate;
+}
     
-    @keyframes flameGlow {
-    0% { filter: drop-shadow(0px 0px 15px #ff4500) brightness(1.2); }
-    100% { filter: drop-shadow(0px 0px 30px #ff6347) brightness(1.7); }
-    }
+    @keyframes fireEffect {
+    0% { filter: drop-shadow(0px 0px 25px #ff4500) brightness(1.3); }
+    50% { filter: drop-shadow(0px 0px 40px #ff6347) brightness(1.6); }
+    100% { filter: drop-shadow(0px 0px 55px #ff8c00) brightness(1.9); }
+}
     
 </style>
 <script src="quotes.js"></script>
