@@ -105,7 +105,9 @@ baseScore += parseFloat(el.value);
 if (document.getElementById('superTrend').checked) {
 let strength = parseInt(document.getElementById('superTrendStrength').value);
 baseScore += strength * 0.5;
-if (document.getElementById('superTrendCounter').checked) baseScore -= 2.0;
+if (document.getElementById('superTrendCounter').checked) {
+    let strength = parseInt(document.getElementById('superTrendStrength').value); 
+    baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
 }
 
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
