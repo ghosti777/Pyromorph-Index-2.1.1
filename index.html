@@ -138,31 +138,37 @@ body {
     
        /* 🔥 Stronger Glow & Flicker */
     filter: drop-shadow(0px 0px 50px #ff4500) brightness(2);
-    animation: fireBurn 8s infinite alternate ease-in-out;
+    animation: fireEffect 8s infinite alternate ease-in-out;
 }
 
 /* 🔥 INTENSIFIED FIRE ANIMATION 🔥 */
-@keyframes fireBurn {
+ @keyframes fireEffect {
     0% { 
-        filter: drop-shadow(0px 0px 40px #ff4500) brightness(2.2); 
+        filter: 
+            drop-shadow(0px 0px 40px #ff4500) brightness(2.2);
     } /* Deep Orange */
     20% { 
-        filter: drop-shadow(0px 0px 60px #ff2d00) brightness(2.5); 
+        filter: 
+            drop-shadow(0px 0px 60px #ff2d00) brightness(2.5);
     } /* Red Core Intensifies */
     40% { 
-        filter: drop-shadow(0px 0px 80px #ff0000) brightness(3); 
+        filter: 
+            drop-shadow(0px 0px 80px #ff0000) brightness(3);
     } /* Max Heat - Blood Red */
     60% { 
-        filter: drop-shadow(0px 0px 110px #ff4500) brightness(2.7) 
-                drop-shadow(0px 0px 80px #007bff);  
+        filter: 
+            drop-shadow(0px 0px 110px #ff4500) brightness(2.7) 
+            drop-shadow(0px 0px 50px rgba(0, 123, 255, 0.8));  
     } /* 🔥🔥 Injecting Blue Glow */
     80% { 
-        filter: drop-shadow(0px 0px 100px #ff4500) brightness(2.5) 
-                drop-shadow(0px 0px 90px #00a2ff);  
+        filter: 
+            drop-shadow(0px 0px 100px #ff4500) brightness(2.5) 
+            drop-shadow(0px 0px 60px rgba(0, 162, 255, 0.9));  
     } /* 💀 Cold Fire Begins */
     100% { 
-        filter: drop-shadow(0px 0px 130px #ff4500) brightness(2.8) 
-                drop-shadow(0px 0px 120px #00ccff);  
+        filter: 
+            drop-shadow(0px 0px 130px #ff4500) brightness(2.8) 
+            drop-shadow(0px 0px 80px rgba(0, 204, 255, 1));  
     } /* ⚡ True Icy Blue Burn */
 
 }
