@@ -134,34 +134,37 @@ body {
     width: 525px; /* Adjust to match scaled background */
     opacity: 1; /* Stronger presence */
     pointer-events: none;
-    z-index: 0; 
+    z-index: -1;
     
 /* 🔥 Stronger Glow & Flicker */
 .flames {
     filter: drop-shadow(0px 0px 50px #ff4500) brightness(2);
-    animation: fireEffect 8s infinite alternate ease-in-out;
+    animation: fireEffect 3.5s infinite alternate ease-in-out;
 }
 
-/* 🔥 INTENSIFIED FIRE ANIMATION 🔥 */
+/* 🔥 INTENSIFIED FIRE & ICE ANIMATION 🔥 */
 @keyframes fireEffect {
     0% { 
-        filter: drop-shadow(0px 0px 40px #ff4500) brightness(2.2); 
+        filter: drop-shadow(0px 0px 50px #ff4500) brightness(2.5); 
     } /* Deep Orange */
-    20% { 
-        filter: drop-shadow(0px 0px 60px #ff2d00) brightness(2.5); 
-    } /* Red Core Intensifies */
-    40% { 
-        filter: drop-shadow(0px 0px 80px #ff0000) brightness(3); 
-    } /* Max Heat - Blood Red */
-    60% { 
-        filter: drop-shadow(0px 0px 110px #ff4500) brightness(2.7); 
-    } /* 🔥🔥 Peak Orange */
+    15% { 
+        filter: drop-shadow(0px 0px 80px #ff2d00) brightness(3);  
+    } /* Intense Red */
+    30% { 
+        filter: drop-shadow(0px 0px 100px #ff0000) brightness(3.5); 
+    } /* Peak Heat - Blood Red */
+    50% { 
+        filter: drop-shadow(0px 0px 120px #ff4500) brightness(3.2);  
+    } /* 🔥🔥 Bright Orange */
+    65% { 
+        filter: drop-shadow(0px 0px 90px #00a2ff) brightness(3.5);  
+    } /* 💀 Cold Fire Begins - Blue Hint */
     80% { 
-        filter: drop-shadow(0px 0px 90px #00a2ff) brightness(2.5);  
-    } /* 💀 Cold Fire Begins - Blue Tint */
+        filter: drop-shadow(0px 0px 110px #00ccff) brightness(3.8);  
+    } /* ⚡ Icy Blue Phase */
     100% { 
-        filter: drop-shadow(0px 0px 120px #00ccff) brightness(2.8);  
-    } /* ⚡ True Icy Blue Burn */
+        filter: drop-shadow(0px 0px 140px #00e6ff) brightness(4);  
+    } /* ❄ MAX Ice Burn */
 }
     
 </style>
