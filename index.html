@@ -18,7 +18,7 @@
         .analysis { background: #222; border-radius: 8px; }
         .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; }
     </style>
-    <script src="quotes.js"></script> <!-- Loads the external quotes file -->
+    <script src="quotes.js"></script>
 </head>
 <body>
 
@@ -39,15 +39,15 @@
             <div class="sub-options">
                 <label for="superTrendStrength">↳ Strength Level:</label>
                 <select id="superTrendStrength">
-                    <option value="1.0">0️⃣ (Weak)</option>
-                    <option value="0.9">1️⃣</option>
-                    <option value="0.85">2️⃣</option>
-                    <option value="0.8">3️⃣</option>
-                    <option value="0.75">4️⃣</option>
-                    <option value="0.7">5️⃣</option>
-                    <option value="0.65">6️⃣ (Strongest)</option>
+                    <option value="0">0️⃣ (Weak)</option>
+                    <option value="1">1️⃣</option>
+                    <option value="2">2️⃣</option>
+                    <option value="3">3️⃣</option>
+                    <option value="4">4️⃣</option>
+                    <option value="5">5️⃣</option>
+                    <option value="6">6️⃣ (Strongest)</option>
                 </select>
-                <div class="indicator"><span>↳ Countertrend ⚠️</span><input type="checkbox" id="superTrendCounter" value="-0.15"></div>
+                <div class="indicator"><span>↳ Countertrend ⚠️</span><input type="checkbox" id="superTrendCounter" value="0"></div>
             </div>
 
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
@@ -102,20 +102,10 @@
             baseScore += parseFloat(el.value);
         });
 
-        // Apply Liquidity Grab Adjustments
-        if (document.getElementById('liqGrab').checked) {
-            if (document.getElementById('liqImpulse').checked) baseScore += parseFloat(document.getElementById('liqImpulse').value);
-            if (document.getElementById('liqCluster').checked) baseScore += parseFloat(document.getElementById('liqCluster').value);
-            if (document.getElementById('liqChoppy').checked) baseScore += parseFloat(document.getElementById('liqChoppy').value);
-            if (document.getElementById('liqVolume').checked) baseScore += parseFloat(document.getElementById('liqVolume').value);
-        }
-
-        // Apply SuperTrend Scaling
         if (document.getElementById('superTrend').checked) {
-            let strengthMultiplier = parseFloat(document.getElementById('superTrendStrength').value);
-            baseScore *= strengthMultiplier;
-
-            if (document.getElementById('superTrendCounter').checked) baseScore *= 0.85;
+            let strength = parseInt(document.getElementById('superTrendStrength').value);
+            baseScore += strength * 0.5; 
+            if (document.getElementById('superTrendCounter').checked) baseScore -= 2.0; 
         }
 
         let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
