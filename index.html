@@ -138,19 +138,30 @@ body {
     
        /* 🔥 Stronger Glow & Flicker */
     filter: drop-shadow(0px 0px 50px #ff4500) brightness(2);
-    animation: fireBurn 3s infinite alternate ease-in-out;
+    animation: fireBurn 8s infinite alternate ease-in-out;
 }
 
 /* 🔥 INTENSIFIED FIRE ANIMATION 🔥 */
-@keyframes fireBurn {
-    0% { filter: drop-shadow(0px 0px 40px #ff4500) brightness(1.8); } /* Orange */
-    15% { filter: drop-shadow(0px 0px 60px #ff2d00) brightness(2.7); } /* Deeper Red */
-    30% { filter: drop-shadow(0px 0px 80px #ff0000) brightness(3.2); } /* Pure Fire Red */
-    50% { filter: drop-shadow(0px 0px 100px #ff4500) brightness(3); } /* Max Inferno */
-    65% { filter: drop-shadow(0px 0px 120px #ff7b00) brightness(2.8); } /* Orange-Red Glow */
-    80% { filter: drop-shadow(0px 0px 130px #ff4500) brightness(2.5); } /* Holding Fire */
-    90% { filter: drop-shadow(0px 0px 150px #007bff) brightness(4); } /* STRONG BLUE TRANSITION */
-    100% { filter: drop-shadow(0px 0px 180px #00aaff) brightness(5); } /* MAX ICY BLUE BURN */
+@@keyframes fireBurn {
+    0% { 
+        filter: drop-shadow(0px 0px 40px #ff4500) brightness(2.2); 
+    } /* Deep Orange */
+    20% { 
+        filter: drop-shadow(0px 0px 60px #ff2d00) brightness(2.5); 
+    } /* Red Core Intensifies */
+    40% { 
+        filter: drop-shadow(0px 0px 80px #ff0000) brightness(3); 
+    } /* Max Heat - Blood Red */
+    60% { 
+        filter: drop-shadow(0px 0px 100px #ff4500) brightness(2.7); 
+    } /* Orange-Red Glow Expands */
+    80% { 
+        filter: drop-shadow(0px 0px 90px #007bff) brightness(2.5); 
+    } /* 🔥🔥 Icy Blue Hits (Longer Duration) */
+    100% { 
+        filter: drop-shadow(0px 0px 110px #00a2ff) brightness(2.8); 
+    } /* ⚡ True Electric Blue Burn */
+}
 }
 }
     
