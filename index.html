@@ -15,17 +15,27 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
-    background-image: url('your-dragon-image.png');
-    background-size: 140% auto; /* Slight zoom out */
-    background-position: center 10%; /* Fine-tuned positioning */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     filter: brightness(1.2) contrast(1.1); /* Enhances visibility */
     overflow-y:scroll; /*Prevents unnecessary scrolling */
     height: 100vh; /*Locks full viewport height */
     display: flex;
     flex-direction: column;
 }
+
+/* 🔥 Background Dragon Layer (LOCKED) 🔥 */
+.bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('your-dragon-image.png');
+    background-size: 140% auto; /* Adjusts background scale */
+    background-position: center 10%; /* Positions dragons correctly */
+    background-repeat: no-repeat;
+    z-index: -2; /* Sends behind everything */
+    filter: brightness(1.2) contrast(1.1);
+    }
 
    .container {
     max-width: 500px;
@@ -141,6 +151,18 @@ body {
 </head>
 
 <body>
+     <!-- 🔥 Background Container (LOCKED) 🔥 -->
+    <div class="bg-container"></div>
+    
+    <!-- 🔥 Flames Over Background 🔥 -->
+    <img src="https://raw.githubusercontent.com/ghosti777/Pyromorph-Index-2.1.1/main/flames.PNG" class="flames">
+    
+    <!-- 🔥 Main Content Container -->
+    <div class="container">
+        <h1 class="main-title">🔥 The Pyromorph Index 🔥</h1>
+        <h2 class="sub-title">3.6</h2>
+        <p>Select indicators, market conditions, and timeframe:</p>
+    
     <img src="https://raw.githubusercontent.com/ghosti777/Pyromorph-Index-2.1.1/main/flames.PNG" class="flames">
 
 <div class="container">
