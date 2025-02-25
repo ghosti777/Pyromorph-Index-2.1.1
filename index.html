@@ -119,8 +119,21 @@ body {
     /* Glowing Flicker Effect */
     filter: drop-shadow(0px 0px 20px #ff4500) brightness(1.5);
     animation: flameGlow 1.8s infinite alternate;
+    
+    }
 
-}
+    .flames
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 300px !important;
+    opacity: 0.9 !important;
+    pointer-events: none !important;
+    filter: drop-shadow(0px 0px 20px #ff4500) brightness(1.5) !important;
+    animation: flameGlow 1.8s infinite alternate !important;
+    
+    }
     
     
 </style>
