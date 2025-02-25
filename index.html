@@ -18,7 +18,7 @@
         .analysis { background: #222; border-radius: 8px; }
         .quote { background: #444; border-radius: 8px; font-style: italic; font-size: 18px; }
     </style>
-    <script src="quotes.js"></script>
+    <script src="quotes.js"></script> <!-- Loads the external quotes file -->
 </head>
 <body>
 
@@ -35,17 +35,19 @@
                 <div class="indicator"><span>↳ Volume Confirmation 📊</span><input type="checkbox" id="liqVolume" value="1.1"></div>
             </div>
 
-            <div class="indicator"><span>SuperTrend AI</span><input type="checkbox" id="superTrend" value="4.5"></div>
-            <label for="stStrength">SuperTrend Signal Strength:</label>
-            <select id="stStrength">
-                <option value="1.0">0️⃣ Weakest</option>
-                <option value="0.9">1️⃣ Low</option>
-                <option value="0.8">2️⃣ Moderate</option>
-                <option value="1.2">3️⃣ Strong</option>
-                <option value="1.4">4️⃣ Very Strong</option>
-                <option value="1.6">5️⃣ Highest Conviction</option>
-            </select>
-            <div class="indicator"><span>Countertrend Signal?</span><input type="checkbox" id="stCounterTrend" value="-1.5"></div>
+            <div class="indicator"><span>Lux Algo SuperTrend AI</span><input type="checkbox" id="superTrend"></div>
+            <div class="sub-options">
+                <label for="stStrength">↳ Signal Strength:</label>
+                <select id="stStrength">
+                    <option value="1.0">0️⃣ (Weak)</option>
+                    <option value="0.9">1️⃣</option>
+                    <option value="0.8">2️⃣</option>
+                    <option value="0.7">3️⃣</option>
+                    <option value="0.6">4️⃣</option>
+                    <option value="0.5">5️⃣ (Strong)</option>
+                </select>
+                <div class="indicator"><span>↳ Countertrend Signal ❌</span><input type="checkbox" id="stCounterTrend"></div>
+            </div>
 
             <div class="indicator"><span>UT Bot Alerts</span><input type="checkbox" value="4.5"></div>
             <div class="indicator"><span>Schaff Trend Cycle (STC)</span><input type="checkbox" value="4"></div>
@@ -59,6 +61,32 @@
             <div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="3.5"></div>
         </div>
 
+        <div class="conditions">
+            <label for="dualCloud">Dual Cloud Setup:</label>
+            <select id="dualCloud">
+                <option value="1.2">1️⃣ Best Case (Both Aligned)</option>
+                <option value="1.1">2️⃣ Strong Case (Big Cloud Aligned)</option>
+                <option value="0.9">3️⃣ Moderate Case (Small Cloud Aligned)</option>
+                <option value="0.7">4️⃣ Worst Case (Neither Aligned)</option>
+            </select>
+
+            <label for="atr">ATR Market Condition:</label>
+            <select id="atr">
+                <option value="1.2">1️⃣ Trending Market</option>
+                <option value="1.0">2️⃣ Neutral/Sideways</option>
+                <option value="0.8">3️⃣ Choppy/High Volatility</option>
+            </select>
+        </div>
+
+        <div class="timeframe">
+            <label for="timeframe">Select Timeframe:</label>
+            <select id="timeframe">
+                <option value="1.3">1M-5M</option>
+                <option value="1.5">15M</option>
+                <option value="1.8">30M</option>
+            </select>
+        </div>
+
         <button onclick="calculateScore()">🚀 Calculate 🚀</button>
 
         <div class="result" id="result">Score: --</div>
@@ -69,11 +97,13 @@
 <script>
     function calculateScore() {
         let baseScore = 0;
+
+        // Apply indicator values
         document.querySelectorAll('#indicators input:checked').forEach(el => {
             baseScore += parseFloat(el.value);
         });
 
-        // Apply Liquidity Grab Adjustments
+        // Liquidity Grab Adjustments
         if (document.getElementById('liqGrab').checked) {
             if (document.getElementById('liqImpulse').checked) baseScore += parseFloat(document.getElementById('liqImpulse').value);
             if (document.getElementById('liqCluster').checked) baseScore += parseFloat(document.getElementById('liqCluster').value);
@@ -81,26 +111,24 @@
             if (document.getElementById('liqVolume').checked) baseScore += parseFloat(document.getElementById('liqVolume').value);
         }
 
-        // Apply SuperTrend AI Adjustments
+        // SuperTrend AI Adjustments
         if (document.getElementById('superTrend').checked) {
-            let stStrength = parseFloat(document.getElementById('stStrength').value);
-            baseScore *= stStrength; // Strength multiplier affects the score
+            let stBaseValue = 4.5;  
+            let stStrengthMultiplier = parseFloat(document.getElementById('stStrength').value);
+            let stAdjustedValue = stBaseValue * stStrengthMultiplier; 
+
+            baseScore += stAdjustedValue; 
+
             if (document.getElementById('stCounterTrend').checked) {
-                baseScore += parseFloat(document.getElementById('stCounterTrend').value); // Penalty for countertrend
+                baseScore -= 2.0; 
             }
         }
 
-        let finalScore = Math.min(baseScore, 100); // Ensure max is 100
+        let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
+        finalScore = Math.min(finalScore, 100);
 
-        // Load a random quote
         let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        let analysisText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" :
-                           finalScore >= 75 ? "✅ Strong Conviction Trade" :
-                           finalScore >= 50 ? "⚠️ Moderate Conviction Trade" :
-                           finalScore >= 30 ? "❓ Low Conviction Trade" :
-                           "🚫 No Conviction / Avoid Trade";
-
-        document.getElementById('analysis').innerText = analysisText;
+        document.getElementById('analysis').innerText = finalScore >= 90 ? "🔥 Ultra High Conviction Trade 🔥" : finalScore >= 75 ? "✅ Strong Conviction Trade" : finalScore >= 50 ? "⚠️ Moderate Conviction Trade" : finalScore >= 30 ? "❓ Low Conviction Trade" : "🚫 No Conviction / Avoid Trade";
         document.getElementById('result').innerText = `Score: ${finalScore.toFixed(1)}`;
         document.getElementById('quote').innerText = `🐺 ${randomQuote}`;
     }
