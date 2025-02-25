@@ -141,22 +141,31 @@ body {
 
 @keyframes fireEffect {
     0% { 
-        filter: drop-shadow(0px 0px 30px #ff4500) brightness(2); 
-    }
-    25% { 
-        filter: drop-shadow(0px 0px 50px #ff2d00) brightness(2.5);  
-    } /* Red Core Intensifies */
-    50% { 
-        filter: drop-shadow(0px 0px 80px #ff0000) brightness(3);  
-    } /* Peak Burn */
-    75% { 
-        filter: drop-shadow(0px 0px 100px #ff4500) brightness(2.7) 
+        filter: drop-shadow(0px 0px 50px #ff4500) brightness(2.2); 
+    } /* Deep Orange Start */
+    
+    20% { 
+        filter: drop-shadow(0px 0px 70px #ff2d00) brightness(2.8);  
+    } /* Red Core Burns Brighter */
+    
+    40% { 
+        filter: drop-shadow(0px 0px 100px #ff0000) brightness(3.2);  
+    } /* Max Heat - Blood Red 🔥 */
+    
+    60% { 
+        filter: drop-shadow(0px 0px 120px #ff4500) brightness(2.9) 
                 drop-shadow(0px 0px 60px rgba(0, 123, 255, 0.8));  
-    } /* 🔥🔥 Injecting Blue Glow */
+    } /* 🔥 First Blue Glow Appears */
+    
+    80% { 
+        filter: drop-shadow(0px 0px 110px #ff4500) brightness(2.7) 
+                drop-shadow(0px 0px 80px rgba(0, 162, 255, 1));  
+    } /* ❄️ Cold Fire Expanding */
+    
     100% { 
-        filter: drop-shadow(0px 0px 130px #ff4500) brightness(2.8) 
-                drop-shadow(0px 0px 90px rgba(0, 204, 255, 1));  
-    } /* ⚡ True Icy Blue Burn */
+        filter: drop-shadow(0px 0px 130px #ff4500) brightness(2.5) 
+                drop-shadow(0px 0px 110px rgba(0, 204, 255, 1));  
+    } /* ⚡ True Blue Cold Flames */
 }
 
 
