@@ -13,8 +13,8 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('your-dragon-image.png');
-    background-size: cover; /* Ensure full image visibility */
-    background-position: center center;
+    background-size: cover; /* Ensures full visibility of dragons */
+    background-position: center top; /* Positions dragons properly */
     background-repeat: no-repeat;
     background-attachment: fixed;
     }
@@ -23,8 +23,9 @@ body {
     max-width: 500px;
     margin: auto;
     padding: 15px;
-    background: rgba(0, 0, 0, 0.85); /* Darker but transparent background */
+    background: rgba(0, 0, 0, 0.75); /* Darker so text pops */
     border-radius: 10px;
+    backdrop-filter: blur(4px); /* Softens the background slightly */
     }
    
     h2 {
