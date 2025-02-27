@@ -49,7 +49,6 @@ body {
     flex-grow: 1;
     padding-bottom: 100px;
     position: relative;
-    overflow: visable;
     }
 
     .title-container {
@@ -134,18 +133,14 @@ body {
     left: 51vw; /* Locks horizontal position */ 
     transform: translate(-50%, -50%);
     width: 525px; /* Adjust to match scaled background */
-    opacity: 0.9; /* Stronger presence */
+    opacity: .95; /* Stronger presence */
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    will-change: filter, opacity;
-    transform: translateZ(0); /* Forces GPU rendering */
-}
-    
     animation: 
-    fireIntensity 3.2s infinite cubic-bezier(0.3, 0.6, 0.4, 1) alternate-reverse 1.33s forwards,
-    fireLightning 2.19s infinite steps(6, end) 1.11s forwards, 
-    flicker 0.63s infinite cubic-bezier(0.5, 0.1, 0.75, 0.9) 0.29s forwards; 
+    fireIntensity 3.2s infinite cubic-bezier(0.3, 0.6, 0.4, 1) alternate-reverse,
+    fireLightning 2.19s infinite steps(6, end) 1.11s,
+    flicker 0.63s infinite cubic-bezier(0.5, 0.1, 0.75, 0.9) 0.29s; 
     }
 
 
@@ -233,7 +228,7 @@ body {
     <!-- 🔥 Main Content Container -->
     <div class="container">
         <h1 class="main-title"> The Pyromorph Index </h1>
-        <h2 class="sub-title">3.7.3</h2>
+        <h2 class="sub-title">3.7.2</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
 <div id="indicators">
