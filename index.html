@@ -137,13 +137,13 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5); 
-    animation: fireSurge 3.3s infinite cubic-bezier(0.25, 0.75, 0.5, 1) alternate-reverse, 
+    animation: fireSurge 3s infinite cubic-bezier(0.25, 0.75, 0.5, 1) alternate-reverse, 
     unstableflicker 0.58s infinite ease-in-out;
 }
 
 @keyframes fireSurge {
     0%   { filter: drop-shadow(0px 0px 30px #0033ff) brightness(2.0); opacity: 0.85; }  /* Deep Electric Blue */
-    12%  { filter: drop-shadow(0px 0px 50px #0066ff) blur(2px); opacity: 0.92; }  /* Neon Blue Glow */
+    12%  { filter: drop-shadow(0px 0px 50px #0066ff) blur(1.5x); opacity: 0.92; }  /* Neon Blue Glow */
     24%  { filter: opacity: 1; }  /* 🔥 Raw Image Exposure with Soft Blur */
     36%  { filter: drop-shadow(0px 0px 80px #0099ff) brightness(2.8); opacity: 0.97; }  /* Vibrant Cyan-Blue */
     50%  { filter: drop-shadow(0px 0px 110px #00ccff) blur(2px); opacity: 1; }  /* Ice Blue Surge */
@@ -151,7 +151,7 @@ body {
     74%  { filter: drop-shadow(0px 0px 120px #00aaff) opacity: 0.92; }  /* Bright Neon Blue */
     86%  { filter: blur(1px); opacity: 1; }  /* 🔥 Raw Image Exposure with Stronger Blur */
     94%  { filter: drop-shadow(0px 0px 75px #0055ff) brightness(2.6); opacity: 0.88; }  /* Deep Blue */
-    100% { filter: drop-shadow(0px 0px 40px #0033ff) blur(2px); opacity: 0.82; }  /* Back to Electric Blue */
+    100% { filter: drop-shadow(0px 0px 40px #0033ff) blur(1px); opacity: 0.82; }  /* Back to Electric Blue */
 }
 
 @keyframes unstableFlicker {
@@ -213,7 +213,14 @@ body {
 <div class="indicator"><span>EMA/SMA Resistance</span><input type="checkbox" value="3.5"></div>
 <div class="indicator"><span>Support & Demand Zones</span><input type="checkbox" value="3.5"></div>
 <div class="indicator"><span>AlgoAlpha Trend Strength TPs</span><input type="checkbox" value="3.5"></div>
-<div class="indicator"><span>RedK EVEREX</span><input type="checkbox" value="3.5"></div>
+<div class="indicator"><span>RedK EVEREX:</span>
+<select id="redkEverex">
+    <option value="0">🚫 No Signal</option>
+    <option value="1.5">⚖️ Neutral Signal</option>
+    <option value="3">✅ Strong Cross + Volume</option>
+    <option value="-2">❌ Cross Against with Volume</option>
+</select>
+</div>
 </div>
 
 <div class="conditions">
@@ -255,6 +262,8 @@ let baseScore = 0;
 document.querySelectorAll('#indicators input:checked').forEach(el => {
 baseScore += parseFloat(el.value);
 });
+// Apply RedK EVEREX Scoring Logic
+baseScore += parseFloat(document.getElementById('redkEverex').value);
 
 if (document.getElementById('superTrend').checked) {
 let strength = parseInt(document.getElementById('superTrendStrength').value);
