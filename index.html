@@ -137,31 +137,31 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: fireSurge 2.8s infinite linear 0.3s,  
-    flicker 0.63s infinite ease-in-out 0.1s; 
+    animation: fireSurge 2.9s infinite ease-in-out alternate-reverse,
+               lightningFlicker 3.3s infinite steps(7, end); 
 }
 
 @keyframes fireSurge {
-    0%   { filter: drop-shadow(0px 0px 30px #0044ff) brightness(2.0); opacity: 0.8; top: 38vh; left: 51vw; } 
-    15%  { filter: drop-shadow(0px 0px 50px #007bff) brightness(2.6); opacity: 0.92; top: 37.9vh; left: 51.1vw; }
-    33%  { filter: drop-shadow(0px 0px 80px #ff4500) brightness(3.3); opacity: 1; top: 38.1vh; left: 50.9vw; } 
-    47%  { filter: drop-shadow(0px 0px 100px #ff0000) brightness(3.9); opacity: 0.98; top: 38vh; left: 51vw; }
-    55%  { filter: drop-shadow(0px 0px 70px #ff6347) brightness(3.4); opacity: 0.88; top: 38.05vh; left: 50.95vw; }
-    66%  { filter: drop-shadow(0px 0px 110px #ff1a1a) brightness(4.1); opacity: 0.96; top: 37.95vh; left: 51.05vw; } 
-    79%  { filter: drop-shadow(0px 0px 90px #ff4500) brightness(3.7); opacity: 0.91; top: 38vh; left: 51vw; }
-    85%  { filter: drop-shadow(0px 0px 120px #ff0000) brightness(4.5); opacity: 1; top: 38.02vh; left: 50.98vw; } 
-    92%  { filter: drop-shadow(0px 0px 75px #007bff) brightness(3.1); opacity: 0.85; top: 37.98vh; left: 51.02vw; }
+    0%   { filter: drop-shadow(0px 0px 30px #0044ff) brightness(2.0); opacity: 0.78; top: 38vh; left: 51vw; } 
+    12%  { filter: drop-shadow(0px 0px 55px #007bff) brightness(2.8); opacity: 0.92; top: 38.1vh; left: 50.9vw; }
+    27%  { filter: drop-shadow(0px 0px 85px #ff4500) brightness(3.5); opacity: 1; top: 37.9vh; left: 51.1vw; } 
+    42%  { filter: drop-shadow(0px 0px 110px #ff0000) brightness(4.0); opacity: 0.98; top: 38vh; left: 51vw; }
+    53%  { filter: drop-shadow(0px 0px 70px #ff6347) brightness(3.6); opacity: 0.88; top: 38.05vh; left: 50.95vw; }
+    64%  { filter: drop-shadow(0px 0px 120px #ff1a1a) brightness(4.2); opacity: 0.96; top: 37.95vh; left: 51.05vw; } 
+    78%  { filter: drop-shadow(0px 0px 95px #ff4500) brightness(3.8); opacity: 0.91; top: 38vh; left: 51vw; }
+    83%  { filter: drop-shadow(0px 0px 130px #ff0000) brightness(4.7); opacity: 1; top: 38.02vh; left: 50.98vw; } 
+    89%  { filter: drop-shadow(0px 0px 75px #007bff) brightness(3.1); opacity: 0.85; top: 37.98vh; left: 51.02vw; }
     100% { filter: drop-shadow(0px 0px 40px #0044ff) brightness(2.2); opacity: 0.8; top: 38vh; left: 51vw; }
 }
 
-@keyframes flicker {
-    0%   { opacity: 0.76; }
-    14%  { opacity: 0.91; }
-    36%  { opacity: 1; }
-    49%  { opacity: 0.85; }
-    67%  { opacity: 0.94; }
-    81%  { opacity: 1; }
-    100% { opacity: 0.79; }
+@keyframes lightningFlicker {
+    0%   { opacity: 0.76; filter: drop-shadow(0px 0px 50px #007bff); }
+    18%  { opacity: 0.91; filter: drop-shadow(0px 0px 70px #00a2ff); }
+    39%  { opacity: 1; filter: drop-shadow(0px 0px 90px #00ccff); }
+    52%  { opacity: 0.87; filter: drop-shadow(0px 0px 120px #ffffff); }
+    63%  { opacity: 1; filter: drop-shadow(0px 0px 100px #00a2ff); }
+    79%  { opacity: 0.85; filter: drop-shadow(0px 0px 80px #0044ff); }
+    100% { opacity: 0.79; filter: drop-shadow(0px 0px 60px #007bff); }
 }
 
 </style>
