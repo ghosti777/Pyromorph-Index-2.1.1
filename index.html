@@ -142,19 +142,18 @@ body {
 }
 
 @keyframes fireSurge {
-    0%   { filter: drop-shadow(0px 0px 30px #0044ff) brightness(2.0) blur(2px); opacity: 0.8; } 
+    0%   { filter: drop-shadow(0px 0px 30px #0044ff) brightness(2.0); opacity: 0.8; } 
     15%  { filter: drop-shadow(0px 0px 50px #007bff) opacity: 0.92; }
     22%  { filter: none; opacity: 1; } /* 🔥 Raw image exposure */
-    33%  { filter: drop-shadow(0px 0px 80px #ff4500) blur(2px); opacity: 1; } 
-    47%  { filter: drop-shadow(0px 0px 100px #ff0000) brightness(2.5) blur(1.5px); opacity: 0.98; }
-    54%  { filter: drop-shadow(0px 0px 90px #ff1a1a) 0.5; } /* 🔥 Random drop */
-    66%  { filter: drop-shadow(0px 0px 110px #007bff) opacity: 0.96; }
-    79%  { filter: drop-shadow(0px 0px 90px #ff1a1a) opacity: 0.91; }
+    33%  { filter: drop-shadow(0px 0px 80px #ff4500)  opacity: 1; } 
+    47%  { filter: drop-shadow(0px 0px 100px #ff0000) brightness(3.3) blur (2px) opacity: 0.98; }
+    54%  { filter: none; opacity: 1; } /* 🔥 Random drop */
+    66%  { filter: drop-shadow(0px 0px 110px #007bff) opacity: 0.96; } 
+    79%  { filter: drop-shadow(0px 0px 90px #ff1a1a) blur(2px) opacity: 0.91; }
     87%  { filter: none; opacity: 1; } /* 🔥 Another raw exposure */
-    92%  { filter: drop-shadow(0px 0px 75px #007bff) brightness(1.5) blur(2px); opacity: 0.85; }
+    92%  { filter: drop-shadow(0px 0px 75px #007bff) brightness(3.1); opacity: 0.85; }
     100% { filter: drop-shadow(0px 0px 40px #0044ff) opacity: 0.8; }
 }
-    
 
 @keyframes unstableFlicker {
     0%   { opacity: 0.78; } 
@@ -179,7 +178,7 @@ body {
     <!-- 🔥 Main Content Container -->
     <div class="container">
         <h1 class="main-title"> The Pyromorph Index </h1>
-        <h2 class="sub-title">3.943</h2>
+        <h2 class="sub-title">3.93</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
 <div id="indicators">
