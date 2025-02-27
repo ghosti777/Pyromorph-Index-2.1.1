@@ -137,80 +137,59 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: 
-    fireIntensity 2.8s infinite cubic-bezier(0.25, 0.55, 0.35, 1) alternate, 
-    fireLightning 1.9s infinite linear, 
-    flicker 0.5s infinite cubic-bezier(0.6, 0.2, 0.8, 0.4); 
+    animation: fireSurge 3.5s infinite cubic-bezier(0.3, 0.6, 0.4, 1) alternate-reverse, 
+               flicker 0.65s infinite ease-in-out; 
     }
 
 
-/* 🔥 INTENSIFIED FIRE ANIMATION 🔥 */
-@keyframes fireIntensity {
-    0% { 
-        filter: drop-shadow(0px 0px 50px #00a2ff) brightness(2.4);
-    } /* 🔴 Deep Red Core */
-    
-    20% { 
-        filter: drop-shadow(0px 0px 70px #ff0000) brightness(2.8);
-    } /* 🔥 Maximum Heat - Blood Red */
-    
-    40% { 
-        filter: drop-shadow(0px 0px 90px #0055ff) brightness(3.5);
-    } /* 🔵 Powerful Electric Blue */
-    
-    60% { 
-        filter: drop-shadow(0px 0px 120px #0033ff) brightness(4.8) 
-                drop-shadow(0px 0px 80px #007bff);  
-    } /* 🔥🔥 Cold Blue Fire Surge */
-    
-    80% { 
-        filter: drop-shadow(0px 0px 140px #001aff) brightness(3.9) 
-                drop-shadow(0px 0px 100px #00a2ff);  
-    } /* 💀 Coldest Icy Fire - MAX Blue */
-    
-    100% { 
-        filter: drop-shadow(0px 0px 160px #0000ff) brightness(3.3)
-                drop-shadow(0px 0px 120px #00ccff);  
-    } /* ⚡ Pure Energy - Deep Arctic Blue */
-    
-     ⚡ INTENSE FIRE & LIGHTNING ANIMATION 🔥 */
-@keyframes fireLightning {
+@keyframes fireSurge {
     0% { 
         filter: drop-shadow(0px 0px 40px #0044ff) brightness(2.2) 
-                drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.7)); 
-    } /* Deep Blue Core + Subtle White Glow */
-    
-    20% { 
-        filter: drop-shadow(0px 0px 60px #007bff) brightness(2.5) 
-                drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.9)); 
-    } /* Electric Blue Burns */
-    
-    40% { 
-        filter: drop-shadow(0px 0px 90px #00a2ff) brightness(3) 
-                drop-shadow(0px 0px 30px rgba(255, 255, 255, 1));  
-    } /* MAX Power - Ice Blue Core */
+                drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.7));  
+        opacity: 0.85;
+    } /* 🔵 Cool Blue Core */
 
-    55% {
-        filter: drop-shadow(0px 0px 110px #00ccff) brightness(3.2) 
+    15% { 
+        filter: drop-shadow(0px 0px 60px #007bff) brightness(2.6) 
+                drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.85));  
+        opacity: 0.9;
+    } /* 🔥 Ignition Surge */
+
+    35% { 
+        filter: drop-shadow(0px 0px 90px #ff4500) brightness(3.2) 
+                drop-shadow(0px 0px 40px rgba(255, 200, 100, 1));  
+        opacity: 1;
+    } /* 🔥🔥 Peak Heat - Fiery Orange */
+
+    50% { 
+        filter: drop-shadow(0px 0px 120px #ff0000) brightness(3.8) 
                 drop-shadow(0px 0px 50px rgba(255, 255, 255, 1));  
-        opacity: 0.92; /* Slightly stronger presence */
-    } /* Peak Lightning Surge ⚡ */
+        opacity: 0.97;
+    } /* 🔴 Maximum Heat Surge */
 
     70% {
-        filter: drop-shadow(0px 0px 70px #007bff) brightness(2.5) 
-                drop-shadow(0px 0px 60px rgba(255, 255, 255, 0.8));  
-        opacity: 0.75; /* Slight fade */
-    } /* Cooldown - Lightning Fades */
+        filter: drop-shadow(0px 0px 100px #ff6347) brightness(3.5) 
+                drop-shadow(0px 0px 40px rgba(255, 255, 255, 0.9));  
+        opacity: 0.92;
+    } /* 🔥 Cooling Off */
+
+    90% {
+        filter: drop-shadow(0px 0px 70px #007bff) brightness(2.7) 
+                drop-shadow(0px 0px 30px rgba(255, 255, 255, 0.7));  
+        opacity: 0.88;
+    } /* 🔵 Cold Phase Returns */
 
     100% { 
-        filter: drop-shadow(0px 0px 50px #0044ff) brightness(2) 
-                drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.6));  
+        filter: drop-shadow(0px 0px 50px #0044ff) brightness(2.2) 
+                drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.6));  
         opacity: 0.85;
-    } /* Back to Base */
-    
+    } /* 🔵 Back to Base */
+}
+
 @keyframes flicker {
-    0% { opacity: 0.8; }
-    50% { opacity: 1; }
+    0% { opacity: 0.78; }
+    30% { opacity: 0.92; }
+    60% { opacity: 1; }
     100% { opacity: 0.85; }
 }
 
@@ -228,7 +207,7 @@ body {
     <!-- 🔥 Main Content Container -->
     <div class="container">
         <h1 class="main-title"> The Pyromorph Index </h1>
-        <h2 class="sub-title">3.8.1</h2>
+        <h2 class="sub-title">3.8.2</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
 <div id="indicators">
