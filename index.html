@@ -137,31 +137,30 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: fireSurge 2.8s infinite cubic-bezier(0.4, 0.7, 0.2, 1) alternate-reverse, 
-           unstableFlicker 0.47s infinite ease-in-out; 
+    animation: fireSurge 2.5s infinite cubic-bezier(0.4, 0.7, 0.2, 1) alternate-reverse, 
+           unstableFlicker 0.45s infinite ease-in-out; 
 }
 
 @keyframes fireSurge {
-    0%   { filter: drop-shadow(0px 0px 25px #0033ff) brightness(1.8); opacity: 0.85; } 
-    15%  { filter: drop-shadow(0px 0px 40px #0055ff) brightness(2.4); opacity: 0.92; }
-    30%  { filter: drop-shadow(0px 0px 65px #007bff) brightness(2.9); opacity: 1; } 
-    45%  { filter: drop-shadow(0px 0px 85px #0099ff) brightness(3.3); opacity: 0.98; }
-    55%  { filter: drop-shadow(0px 0px 70px #0066ff) brightness(2.8); opacity: 0.9; }
-    68%  { filter: drop-shadow(0px 0px 100px #0044ff) brightness(3.5); opacity: 0.95; } 
-    80%  { filter: drop-shadow(0px 0px 90px #0033ff) brightness(3.1); opacity: 0.91; }
-    88%  { filter: drop-shadow(0px 0px 110px #0022ff) brightness(3.8); opacity: 1; } 
-    94%  { filter: drop-shadow(0px 0px 80px #0011ff) brightness(3.0); opacity: 0.87; }
-    100% { filter: drop-shadow(0px 0px 40px #0000ff) brightness(2.2); opacity: 0.85; }
+    0%   { filter: drop-shadow(0px 0px 20px #0033ff) brightness(1.6); opacity: 0.85; } 
+    12%  { filter: drop-shadow(0px 0px 35px #0055ff) brightness(2.2); opacity: 0.9; }
+    27%  { filter: drop-shadow(0px 0px 55px #007bff) brightness(2.7); opacity: 0.97; } 
+    42%  { filter: drop-shadow(0px 0px 75px #0099ff) brightness(3.0); opacity: 1; }
+    55%  { filter: drop-shadow(0px 0px 60px #0066ff) brightness(2.5); opacity: 0.9; }
+    68%  { filter: drop-shadow(0px 0px 85px #0044ff) brightness(2.8); opacity: 0.94; } 
+    80%  { filter: drop-shadow(0px 0px 75px #0033ff) brightness(2.6); opacity: 0.91; }
+    88%  { filter: drop-shadow(0px 0px 95px #0022ff) brightness(3.2); opacity: 0.97; } 
+    94%  { filter: drop-shadow(0px 0px 70px #0011ff) brightness(2.4); opacity: 0.85; }
+    100% { filter: drop-shadow(0px 0px 35px #0000ff) brightness(2.0); opacity: 0.83; }
 }
 
 @keyframes unstableFlicker {
-    0%   { opacity: 0.82; } 
-    22%  { opacity: 0.97; }
-    41%  { opacity: 1; }
-    59%  { opacity: 0.9; }
-    76%  { opacity: 1; }
-    100% { opacity: 0.83; }
-}}
+    0%   { opacity: 0.78; } 
+    18%  { opacity: 0.94; }
+    33%  { opacity: 1; }
+    52%  { opacity: 0.89; }
+    70%  { opacity: 1; }
+    100% { opacity: 0.82; }
 }
 
 </style>
@@ -178,7 +177,7 @@ body {
     <!-- 🔥 Main Content Container -->
     <div class="container">
         <h1 class="main-title"> The Pyromorph Index </h1>
-        <h2 class="sub-title">3.8.9</h2>
+        <h2 class="sub-title">3.9</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
 <div id="indicators">
