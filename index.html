@@ -137,31 +137,40 @@ body {
     pointer-events: none;
     z-index: -1;
     filter: drop-shadow(0px 0px 80px #ff4500) brightness(2.5);
-    animation: fireSurge 3.3s infinite cubic-bezier(0.25, 0.75, 0.5, 1) alternate-reverse, 
-           flicker 0.58s infinite ease-in-out; 
+    animation: fireSurge 3.2s infinite cubic-bezier(0.3, 0.6, 0.4, 1) alternate-reverse, 
+           flicker 0.57s infinite ease-in-out, 
+           surgeShock 1.9s infinite steps(5, end); 
 }
 
 @keyframes fireSurge {
-    0%   { filter: drop-shadow(0px 0px 35px #0044ff) brightness(2.1); opacity: 0.82; } 
-    14%  { filter: drop-shadow(0px 0px 55px #007bff) brightness(2.7); opacity: 0.94; }
-    29%  { filter: drop-shadow(0px 0px 85px #ff4500) brightness(3.4); opacity: 1; } 
-    45%  { filter: drop-shadow(0px 0px 105px #ff0000) brightness(4.0); opacity: 0.99; }
-    52%  { filter: drop-shadow(0px 0px 75px #ff6347) brightness(3.5); opacity: 0.89; }
-    63%  { filter: drop-shadow(0px 0px 115px #ff1a1a) brightness(4.3); opacity: 0.97; } 
-    77%  { filter: drop-shadow(0px 0px 95px #ff4500) brightness(3.8); opacity: 0.93; }
-    86%  { filter: drop-shadow(0px 0px 125px #ff0000) brightness(4.6); opacity: 1; } 
-    94%  { filter: drop-shadow(0px 0px 70px #007bff) brightness(3.2); opacity: 0.87; }
-    100% { filter: drop-shadow(0px 0px 45px #0044ff) brightness(2.3); opacity: 0.81; }
+    0%   { filter: drop-shadow(0px 0px 30px #0044ff) brightness(2.0); opacity: 0.85; top: 38vh; left: 51vw; } /* Deep Blue Core */
+    12%  { filter: drop-shadow(0px 0px 50px #007bff) brightness(2.8); opacity: 0.92; top: 38.1vh; left: 50.9vw; } /* Neon Blue Surge */
+    27%  { filter: drop-shadow(0px 0px 80px #00a2ff) brightness(3.5); opacity: 1; top: 37.9vh; left: 51.1vw; } /* Electric Blue Max Heat */
+    42%  { filter: drop-shadow(0px 0px 100px #ffffff) brightness(4.0); opacity: 0.98; top: 38.2vh; left: 50.8vw; } /* White-Hot Flash */
+    53%  { filter: drop-shadow(0px 0px 70px #00c8ff) brightness(3.6); opacity: 0.88; top: 37.85vh; left: 51.15vw; } /* Superheated Cyan */
+    64%  { filter: drop-shadow(0px 0px 110px #007bff) brightness(4.1); opacity: 0.96; top: 38.05vh; left: 50.95vw; } /* Electric Blue Reignites */
+    78%  { filter: drop-shadow(0px 0px 90px #0044ff) brightness(3.7); opacity: 0.91; top: 38vh; left: 51vw; } /* Deep Blue Fade */
+    83%  { filter: drop-shadow(0px 0px 120px #00c8ff) brightness(4.5); opacity: 1; top: 38.07vh; left: 50.93vw; } /* Final Surge */
+    89%  { filter: drop-shadow(0px 0px 75px #007bff) brightness(3.1); opacity: 0.85; top: 37.93vh; left: 51.07vw; } /* Cooldown */
+    100% { filter: drop-shadow(0px 0px 40px #0044ff) brightness(2.2); opacity: 0.85; top: 38vh; left: 51vw; } /* Reset */
 }
 
 @keyframes flicker {
-    0%   { opacity: 0.76; }
-    22%  { opacity: 0.91; }
-    49%  { opacity: 1; }
-    63%  { opacity: 0.85; }
-    74%  { opacity: 0.95; }
-    88%  { opacity: 1; }
-    100% { opacity: 0.79; }
+    0%   { opacity: 0.78; transform: scale(1); } 
+    14%  { opacity: 0.91; transform: scale(1.02); }
+    36%  { opacity: 1; transform: scale(1.03); }
+    49%  { opacity: 0.85; transform: scale(1); }
+    67%  { opacity: 0.94; transform: scale(1.02); }
+    81%  { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.79; transform: scale(1); }
+}
+
+@keyframes surgeShock {
+    0%, 100% { filter: drop-shadow(0px 0px 40px #0044ff) brightness(2.2); } 
+    10% { filter: drop-shadow(0px 0px 70px #00c8ff) brightness(3.5); } 
+    30% { filter: drop-shadow(0px 0px 90px #00a2ff) brightness(4); } 
+    50% { filter: drop-shadow(0px 0px 140px #ffffff) brightness(5.5); opacity: 0.98; } /* Intense White-Hot Burst */
+    75% { filter: drop-shadow(0px 0px 80px #007bff) brightness(3.8); } 
 }
 
 </style>
@@ -178,7 +187,7 @@ body {
     <!-- 🔥 Main Content Container -->
     <div class="container">
         <h1 class="main-title"> The Pyromorph Index </h1>
-        <h2 class="sub-title">3.8.7</h2>
+        <h2 class="sub-title">3.8.8</h2>
         <p>Select indicators, market conditions, and timeframe:</p>
 
 <div id="indicators">
