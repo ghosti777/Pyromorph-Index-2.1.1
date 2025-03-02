@@ -287,10 +287,10 @@ let timeframe = parseFloat(document.getElementById('timeframe').value);
 let dualCloud = parseFloat(document.getElementById('dualCloud').value);
 let atr = parseFloat(document.getElementById('atr').value);
 
-// 🔥 Step 2: Adjusted Base Values (Accounting for Multipliers in Advance)
-let emaSmaBase = 3.2; // Default for 1M-5M
-if (timeframe === 1.5) { emaSmaBase = 4.1; }  // 15M
-else if (timeframe === 1.8) { emaSmaBase = 5.3; }  // 30M
+// 🔥 Step 2: Adjusted Base Values (FINAL Reduction)
+let emaSmaBase = 2.8; // Default for 1M-5M
+if (timeframe === 1.5) { emaSmaBase = 3.6; }  // 15M
+else if (timeframe === 1.8) { emaSmaBase = 4.8; }  // 30M
 
 // 🔥 Step 3: Apply Impact Adjustment
 let emaSmaScore = emaSmaBase * (emaSmaImpact / 5);
