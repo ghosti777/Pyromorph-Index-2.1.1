@@ -295,11 +295,10 @@ let emaSmaWeighting = 1.3;  // Default (1-5M)
 if (timeframe === 1.5) { emaSmaWeighting = 1.5; }  // 15M
 else if (timeframe === 1.8) { emaSmaWeighting = 1.75; }  // 30M
 
-// **Final Score Calculation with Hard Cap**
-let emaSmaScore = emaSmaBase * emaSmaWeighting;
+// **Final Score Calculation with Selected Dropdown Value**
+let emaSmaScore = (emaSmaBase * emaSmaImpact) * emaSmaWeighting;
 emaSmaScore = Math.min(emaSmaScore, 16); // 🔥 Hard cap applied
 baseScore += emaSmaScore;
-
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
 finalScore = Math.min(finalScore, 100);
 
