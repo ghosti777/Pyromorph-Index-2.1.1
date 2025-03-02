@@ -281,19 +281,20 @@ let strength = parseInt(document.getElementById('superTrendStrength').value);
 baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
 }
 }
- // 🔥 **Corrected EMA/SMA Scoring Without Double Weighting**
+ // 🔥 **NEW: Adjusted EMA/SMA Scoring Based on Timeframe**
 let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value) || 0;
 let timeframe = parseFloat(document.getElementById('timeframe').value);
 
-// ✅ Corrected Base Points (Adjusted for Existing Weighting)
-let emaSmaBase = 3.0; // Default for 1-5M
-if (timeframe === 1.5) { emaSmaBase = 4.0; }  // 15M
-else if (timeframe === 1.8) { emaSmaBase = 6; }  // 30M
+// ✅ **Correct Base Points Without Extra Multipliers**
+let emaSmaBase = 10; // Default (1-5M)
+if (emaSmaImpact === 5) { emaSmaBase = 15; }  // Positive Reaction ✅
+else if (emaSmaImpact === 3) { emaSmaBase = 12; }  // Approaching Ally ⚡
+else if (emaSmaImpact === -5) { emaSmaBase = -15; }  // Approaching Danger ⚠️
+else { emaSmaBase = 0; } // Neutral / No Major Influence
 
-// ✅ Apply Scenario-Specific Adjustment
-let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // Keeps scaling in range
-baseScore += emaSmaScore;
-    
+// ✅ **Final Addition to Base Score (No Double Scaling)**
+baseScore += emaSmaBase;
+
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
 finalScore = Math.min(finalScore, 100);
 
