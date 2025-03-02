@@ -282,23 +282,21 @@ baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
 }
 }
 // 🔥 **NEW: Adjusted EMA/SMA Scoring Based on Timeframe**
-let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value);
+let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value) || 0;
 let timeframe = parseFloat(document.getElementById('timeframe').value);
 
-// **Apply Correct Base Points per Timeframe**
+// ✅ Base Points Per Timeframe (No Extra Multipliers)
 let emaSmaBase = 4.5; // Default (1-5M)
 if (timeframe === 1.5) { emaSmaBase = 6.5; }  // 15M
 else if (timeframe === 1.8) { emaSmaBase = 9.0; }  // 30M
 
-// **Apply New Scaling Multipliers**
-let emaSmaWeighting = 1.3;  // Default (1-5M)
-if (timeframe === 1.5) { emaSmaWeighting = 1.5; }  // 15M
-else if (timeframe === 1.8) { emaSmaWeighting = 1.75; }  // 30M
-
-// **Final Score Calculation with Selected Dropdown Value**
-let emaSmaScore = (emaSmaBase * emaSmaImpact) * emaSmaWeighting;
+// ✅ **Final Score Calculation (No Double Weighting)**
+let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // Normalize impact (since max = ±5)
 emaSmaScore = Math.min(emaSmaScore, 16); // 🔥 Hard cap applied
+
+// ✅ Add it to Base Score
 baseScore += emaSmaScore;
+
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
 finalScore = Math.min(finalScore, 100);
 
