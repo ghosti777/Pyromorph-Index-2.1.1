@@ -281,28 +281,28 @@ let strength = parseInt(document.getElementById('superTrendStrength').value);
 baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
 }
 }
-// 🔥 **Final Corrected EMA/SMA Scaling (Prevents Overboosting)**
+// 🔥 Step 1: Get User Inputs
 let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value) || 0;
-let timeframe = document.getElementById('timeframe').value;
+let timeframe = parseFloat(document.getElementById('timeframe').value);
 let dualCloud = parseFloat(document.getElementById('dualCloud').value);
 let atr = parseFloat(document.getElementById('atr').value);
 
-// **Base Values Adjusted for Scaling**
+// 🔥 Step 2: Set Base Score Before Multipliers
 let emaSmaBase = 8.3; // Default for 1M-5M
-if (timeframe === "1.5") { emaSmaBase = 10.1; }  // 15M
-else if (timeframe === "1.8") { emaSmaBase = 11.5; }  // 30M
+if (timeframe === 1.5) { emaSmaBase = 10.1; }  // 15M
+else if (timeframe === 1.8) { emaSmaBase = 11.5; }  // 30M
 
-// **Apply Normalization**
-let emaSmaScore = emaSmaBase * (emaSmaImpact / 5);
+// 🔥 Step 3: Apply Multipliers First
+let emaSmaScore = emaSmaBase * (emaSmaImpact / 5) * dualCloud * atr;
 
-// ✅ **Apply Global Multipliers FIRST**
-emaSmaScore *= dualCloud * atr;
+// 🔥 Step 4: Now Apply the Final Cap
+if (emaSmaImpact === 3) { // Approaching Ally
+    emaSmaScore = Math.min(emaSmaScore, 12);
+} else {
+    emaSmaScore = Math.max(Math.min(emaSmaScore, 15), -15);
+}
 
-// ✅ **Now Hard Cap to Prevent Overboosting**
-emaSmaScore = Math.min(Math.max(emaSmaScore, -15), 15);
-if (emaSmaImpact === 3) { emaSmaScore = Math.min(emaSmaScore, 12); } // Ally capped at 12
-
-// ✅ **Add to Base Score AFTER Capping**
+// 🔥 Step 5: Add to Total Score
 baseScore += emaSmaScore;
 
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
