@@ -288,7 +288,7 @@ let timeframe = parseFloat(document.getElementById('timeframe').value);
 // ✅ Corrected Base Points (Adjusted for Existing Weighting)
 let emaSmaBase = 3.0; // Default for 1-5M
 if (timeframe === 1.5) { emaSmaBase = 4.0; }  // 15M
-else if (timeframe === 1.8) { emaSmaBase = 5.5; }  // 30M
+else if (timeframe === 1.8) { emaSmaBase = 6; }  // 30M
 
 // ✅ Apply Scenario-Specific Adjustment
 let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // Keeps scaling in range
