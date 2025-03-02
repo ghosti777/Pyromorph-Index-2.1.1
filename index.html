@@ -281,21 +281,21 @@ let strength = parseInt(document.getElementById('superTrendStrength').value);
 baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
 }
 }
- // 🔥 **EMA/SMA Scoring (NO DOUBLE WEIGHTING)** 🔥
-    let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value) || 0;
-    let timeframe = parseFloat(document.getElementById('timeframe').value) || 1;
+ // 🔥 **Fixing EMA/SMA Calculation ONLY**
+let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value) || 0;
+let timeframe = parseFloat(document.getElementById('timeframe').value) || 1;
 
-    // ✅ Base Points Per Timeframe (NO Extra Multipliers)
-    let emaSmaBase = 4.5; // Default (1-5M)
-    if (timeframe === 1.5) { emaSmaBase = 6.5; }  // 15M
-    else if (timeframe === 1.8) { emaSmaBase = 9.0; }  // 30M
+// ✅ **Correct Base Points Per Timeframe**
+let emaSmaBase = 4.5; // Default (1-5M)
+if (timeframe === 1.5) { emaSmaBase = 6.5; }  // 15M
+else if (timeframe === 1.8) { emaSmaBase = 9.0; }  // 30M
 
-    // ✅ **Final Score Calculation (No Weighting Applied Again)**
-    let emaSmaScore = emaSmaBase * emaSmaImpact;
-    emaSmaScore = Math.min(emaSmaScore, 16); // 🔥 Hard cap at 16
+// ✅ **Apply Final Score Calculation**
+let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // **Adjust impact to be relative**
+emaSmaScore = Math.min(emaSmaScore, 16); // 🔥 Hard cap to prevent insane values
 
-    // ✅ Add it to Base Score ONCE (No extra weighting)
-    baseScore += emaSmaScore;
+// ✅ **Now We JUST Add This One Value**
+baseScore += emaSmaScore;
     
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
 finalScore = Math.min(finalScore, 100);
