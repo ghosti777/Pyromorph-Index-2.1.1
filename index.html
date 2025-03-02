@@ -291,8 +291,9 @@ if (timeframe === 1.5) { emaSmaBase = 6.5; }  // 15M
 else if (timeframe === 1.8) { emaSmaBase = 9.0; }  // 30M
 
 // ✅ **Final Score Calculation (No Double Weighting)**
-let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // Normalize impact (since max = ±5)
-emaSmaScore = Math.min(emaSmaScore, 16); // 🔥 Hard cap applied
+let emaSmaScore = (emaSmaBase * emaSmaImpact) * emaSmaWeighting;
+emaSmaScore = Math.min(emaSmaScore, 16 / emaSmaWeighting); // 🔥 Cap adjusted to prevent 23.3 issue
+baseScore += emaSmaScore;
 
 // ✅ Add it to Base Score
 baseScore += emaSmaScore;
