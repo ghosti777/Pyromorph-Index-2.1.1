@@ -305,12 +305,6 @@ if (emaSmaImpact === 3) { emaSmaScore = Math.min(emaSmaScore, 12); } // Ally cap
 // ✅ **Add to Base Score AFTER Capping**
 baseScore += emaSmaScore;
 
-let finalScore = baseScore * parseFloat(timeframe);
-finalScore = Math.min(finalScore, 100);
-
-let finalScore = baseScore * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
-finalScore = Math.min(finalScore, 100);
-
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
 finalScore = Math.min(finalScore, 100);
 
