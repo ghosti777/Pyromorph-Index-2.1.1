@@ -288,8 +288,8 @@ let dualCloud = parseFloat(document.getElementById('dualCloud').value);
 let atr = parseFloat(document.getElementById('atr').value);
 
 // 🔥 Step 2: Corrected Base Values (Mathematically Derived)
-let emaSmaBase = 8.01; // Default for 1M-5M
-if (timeframe === 1.5) { emaSmaBase = 6.94; }  // 15M
+let emaSmaBase = 3.05; // Default for 1M-5M
+if (timeframe === 1.5) { emaSmaBase = 5.55; }  // 15M
 else if (timeframe === 1.8) { emaSmaBase = 5.79; }  // 30M (Reversed Calculation)
 
 // 🔥 Step 3: Apply Impact Adjustment (No Scaling Yet)
