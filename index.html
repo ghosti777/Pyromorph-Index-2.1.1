@@ -281,20 +281,24 @@ let strength = parseInt(document.getElementById('superTrendStrength').value);
 baseScore -= strength * 0.75; // CORRECT: Deducts more for stronger countertrend
 }
 }
-// 🔥 **NEW: Corrected EMA/SMA Calculation (Hard Capped Final Values)**
+// 🔥 **NEW: FINALIZED EMA/SMA SCORING (LOCKED AT ±15 & 12)**
 let emaSmaImpact = parseFloat(document.getElementById('emaSmaImpact').value) || 0;
 let timeframe = document.getElementById('timeframe').value;
 
-// **Base Values That Will Lead to Correct Final Values After Full Calculation**
-let emaSmaBase = 5.8; // Default for 1M-5M
-if (timeframe === "1.5") { emaSmaBase = 7.6; }  // 15M
-else if (timeframe === "1.8") { emaSmaBase = 10.2; }  // 30M
+// ✅ **Pre-Adjusted Base Values to Ensure Final Scores Are Correct**
+let emaSmaBase = 3.8; // Default for 1M-5M
+if (timeframe === "1.5") { emaSmaBase = 5.2; }  // 15M
+else if (timeframe === "1.8") { emaSmaBase = 6.8; }  // 30M
 
-// **Final Scoring (NO EXTRA SCALING AFTER THIS)**
-let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // Normalizes against max impact
-emaSmaScore = Math.min(Math.max(emaSmaScore, -15), 15); // Hard cap at ±15
-if (emaSmaImpact === 3) { emaSmaScore = Math.min(emaSmaScore, 12); } // Ally capped at 12
+// ✅ **Final Scoring (NO EXTRA SCALING AFTER THIS)**
+let emaSmaScore = emaSmaBase * (emaSmaImpact / 5); // Normalizes max impact
+
+// 🚨 **HARD CAP TO PREVENT OVER-AMPLIFICATION**
+emaSmaScore = Math.min(Math.max(emaSmaScore, -15), 15); // **Hard cap at ±15**
+if (emaSmaImpact === 3) { emaSmaScore = Math.min(emaSmaScore, 12); } // **Ally capped at 12**
+
 baseScore += emaSmaScore;
+
 let finalScore = baseScore * parseFloat(document.getElementById('timeframe').value) * parseFloat(document.getElementById('dualCloud').value) * parseFloat(document.getElementById('atr').value);
 finalScore = Math.min(finalScore, 100);
 
